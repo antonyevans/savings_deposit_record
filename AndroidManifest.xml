@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.android.ideos"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="7" />
+
+    <application android:label="@string/app_name" android:debuggable="true" android:icon="@drawable/icon">
+        <activity android:name=".Ideosactivity"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mscreenactivity"
+        		  android:label="@string/app_name">
+        	<intent-filter>
+        		  <action
+        		  android:name="android.intent.action.VIEW"/>
+        		  <category
+        		  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+       </activity> 
+        <activity android:name=".ClientsActivity"
+        		  android:label="@string/app_name">
+        	<intent-filter>
+        		  <action
+        		  android:name="android.intent.action.VIEW"/>
+        		  <category
+        		  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+        </activity> 
+        <activity android:name=".ClientsData"
+        		  android:label="@string/app_name">
+        	<intent-filter>
+        		  <action
+        		  android:name="android.intent.action.VIEW"/>
+        		  <category
+        		  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+        </activity>
+        <activity android:name=".Constants"
+        		  android:label="@string/app_name">
+        	<intent-filter>
+        		  <action
+        		  android:name="android.intent.action.VIEW"/>
+        		  <category
+        		  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+       </activity>
+     </application>
+</manifest>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal">
+    <Button 
+    android:text="Clients" 
+    android:layout_height="wrap_content" 
+    android:clickable="true" 
+    android:layout_weight="1" 
+    android:layout_width="wrap_content" android:id="@+id/Clients_button">
+    </Button>
+    <LinearLayout 
+    android:layout_height="fill_parent" 
+    android:id="@+id/linearLayout1" 
+    android:layout_width="wrap_content" 
+    android:layout_weight="1">
+    <Button android:clickable="true" android:id="@+id/History_button" 
+    android:text="History" android:layout_weight="1" 
+    android:layout_height="wrap_content" 
+    android:layout_width="fill_parent">
+    </Button>
+    </LinearLayout>
+    <Button android:layout_gravity="fill" 
+    android:clickable="true" 
+    android:id="@+id/Bank_button" 
+    android:layout_width="fill_parent" 
+    android:text="Bank" 
+    android:layout_weight="1" 
+    android:layout_height="wrap_content">
+    </Button>
+</LinearLayout>
