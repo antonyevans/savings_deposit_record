@@ -1,5 +1,5 @@
 package com.android.ideos;
-
+// this is my first login screen and it calls the second screen upon login successfully.
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

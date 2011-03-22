@@ -1,5 +1,5 @@
 package com.android.ideos;
-
+//this where i will use the content provider to help in the functionality of the different menus
  import static android.provider.BaseColumns._ID;
 
  import static com.android.ideos.Constants.TABLE_NAME;

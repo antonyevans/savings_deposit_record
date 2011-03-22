@@ -1,5 +1,5 @@
 package com.android.ideos;
-
+// my class to store data layout in the data base.
  import static android.provider.BaseColumns._ID;
 
  import static com.android.ideos.Constants.TABLE_NAME;
