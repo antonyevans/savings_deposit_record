@@ -41,10 +41,11 @@ public final class R {
         public static final int bank=0x7f030000;
         public static final int clients=0x7f030001;
         public static final int clientsdata=0x7f030002;
-        public static final int history=0x7f030003;
-        public static final int listviewitem=0x7f030004;
-        public static final int main=0x7f030005;
-        public static final int mscreen=0x7f030006;
+        public static final int contentprovider=0x7f030003;
+        public static final int history=0x7f030004;
+        public static final int listviewitem=0x7f030005;
+        public static final int main=0x7f030006;
+        public static final int mscreen=0x7f030007;
     }
     public static final class menu {
         public static final int menu=0x7f050000;

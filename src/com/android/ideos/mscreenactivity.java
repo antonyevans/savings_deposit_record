@@ -1,6 +1,7 @@
 package com.android.ideos;
 // my second screen.
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,13 +46,18 @@ public class mscreenactivity extends Mscreen1 {
         {
         	@Override
         	public void onClick(View v){
-        		
+        		Intent i = new Intent(mscreenactivity.this,HistoryActivity.class);
+    			startActivity(i);  
+               
         		}
         	});
         btnBank.setOnClickListener(new OnClickListener()
         {
         	@Override
         	public void onClick(View v){
+        		Intent i = new Intent(mscreenactivity.this,BankActivity.class);
+    			startActivity(i);  
+               
         }
       });
     }
