@@ -1,5 +1,5 @@
 package com.android.ideos;
-// my second screen.
+// my second screen as seen by the user.
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -36,6 +36,7 @@ public class mscreenactivity extends Mscreen1 {
         {
         	@Override
         	public void onClick(View v){
+        //Calls the next ClientsActivity 
         		Intent i = new Intent(mscreenactivity.this,ClientsActivity.class);
     			startActivity(i);  
                
@@ -46,6 +47,7 @@ public class mscreenactivity extends Mscreen1 {
         {
         	@Override
         	public void onClick(View v){
+        		//Calls the next HistoryActivity 
         		Intent i = new Intent(mscreenactivity.this,HistoryActivity.class);
     			startActivity(i);  
                
@@ -55,6 +57,7 @@ public class mscreenactivity extends Mscreen1 {
         {
         	@Override
         	public void onClick(View v){
+        		//Calls the next BankActivity 
         		Intent i = new Intent(mscreenactivity.this,BankActivity.class);
     			startActivity(i);  
                

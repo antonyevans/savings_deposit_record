@@ -14,8 +14,6 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
- 
  public class ClientsActivity extends ListActivity {
  
  
@@ -52,8 +50,16 @@ import android.view.MenuItem;
 	values.put(TITLE, string);
 	getContentResolver().insert(CONTENT_URI, values);
 	}
+	
+	//calls the content menu layout
+	 @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+      MenuInflater myMenuInflater = getMenuInflater();
+      myMenuInflater.inflate(R.menu.menu, menu);
+         return true;
+     }
  
- 
+	 // the layout of the menu as seen in the menu.xml file
 	 @Override
      public boolean onOptionsItemSelected(MenuItem item) {
       // TODO Auto-generated method stub
