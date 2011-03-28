@@ -1,9 +1,9 @@
 package com.android.ideos;
-// my class to store data layout in the data base.
+// A class to store the data layout in the data base.
  import static android.provider.BaseColumns._ID;
 
  import static com.android.ideos.Constants.TABLE_NAME;
- import static com.android.ideos.Constants.TIME;
+ 
  import static com.android.ideos.Constants.TITLE;
  import android.content.Context;
  import android.database.sqlite.SQLiteDatabase;
@@ -21,8 +21,7 @@ package com.android.ideos;
  @Override
  public void onCreate(SQLiteDatabase db) {
  db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + _ID
- + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TIME
- + " INTEGER," + TITLE + " TEXT NOT NULL);" );
+ + " INTEGER PRIMARY KEY AUTOINCREMENT, " + TITLE + " TEXT NOT NULL);" );
  }
 
  @Override

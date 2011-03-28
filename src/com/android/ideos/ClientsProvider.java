@@ -1,7 +1,6 @@
 package com.android.ideos;
-
+//this is my Content provider class (ClientsProvider)
 import static android.provider.BaseColumns._ID;
-
 import static com.android.ideos.Constants.AUTHORITY;
 import static com.android.ideos.Constants.CONTENT_URI;
 import static com.android.ideos.Constants.TABLE_NAME;
@@ -28,8 +27,15 @@ private static final String CONTENT_ITEM_TYPE
 private ClientsData clients;
 private UriMatcher uriMatcher;
 // ...
+//Needed for any content provider it must have the following:
 
+//A URi from which you can run queries.
+//MIME type corresponding to the content.
+// an Insert() method.
+// an Update() method.
+//A Delete() method.
 
+//A Delete() method.
 @Override
 public int delete(Uri uri, String selection, String[] selectionArgs) {
 	// TODO Auto-generated method stub
@@ -66,35 +72,40 @@ public String getType(Uri uri) {
     }
  }
 
-
+//an Insert() method.
 @Override
 public Uri insert(Uri uri, ContentValues values) {
 	// TODO Auto-generated method stub
 	SQLiteDatabase db = clients.getWritableDatabase();
 
-    // Validate the requested uri
+    // Validate the requested Uri if not correct, throw the error
     if (uriMatcher.match(uri) != CLIENTS) {
        throw new IllegalArgumentException("Unknown URI " + uri);
     }
 
-    // Insert into database
+    // if correct,Insert into database
     long id = db.insertOrThrow(TABLE_NAME, null, values);
 
     // Notify any watchers of the change
     Uri newUri = ContentUris.withAppendedId(CONTENT_URI, id);
     getContext().getContentResolver().notifyChange(newUri, null);
+    
     return newUri;
  }
+
 @Override
 
 public boolean onCreate() {
 	// TODO Auto-generated method stub
+	//defining URiMatcher objects that matches the clients URi
 	uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     uriMatcher.addURI(AUTHORITY, "clients", CLIENTS);
     uriMatcher.addURI(AUTHORITY, "clients/#", CLIENTS_ID);
     clients = new ClientsData(getContext());
 	return false;
+	
 }
+//my query method
 @Override
 public Cursor query(Uri uri, String[] projection, String selection,
 		String[] selectionArgs, String orderBy) {
@@ -109,14 +120,14 @@ public Cursor query(Uri uri, String[] projection, String selection,
      Cursor cursor = db.query(TABLE_NAME, projection, selection,
            selectionArgs, null, null, orderBy);
 
-     // Tell the cursor what uri to watch, so it knows when its
+     // Tell the cursor what Uri to watch, so it knows when its
      // source data changes
      cursor.setNotificationUri(getContext().getContentResolver(),
            uri);
      return cursor;
   }
 	
-
+//an Update() method.
 @Override
 public int update(Uri uri, ContentValues values, String selection,
 		String[] selectionArgs) {
@@ -146,5 +157,6 @@ public int update(Uri uri, ContentValues values, String selection,
              + (!TextUtils.isEmpty(selection)
                    ? " AND (" + selection + ')'
                    : "");
-    
-}}
+      
+}
+}
