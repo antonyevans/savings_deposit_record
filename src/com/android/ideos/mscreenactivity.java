@@ -10,7 +10,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class mscreenactivity extends Mscreen1 {
+public class Mscreenactivity extends Mscreen1 {
     
 	//Declaring my Views for easier access later in the project
     
@@ -35,8 +35,9 @@ public class mscreenactivity extends Mscreen1 {
         {
         	@Override
         	public void onClick(View v){
-        //Calls the next ClientsActivity 
-        		Intent i = new Intent(mscreenactivity.this,ClientsActivity.class);
+        //Calls the next class (ClientsActivity) 
+        		
+    			Intent i = new Intent(Mscreenactivity.this,ClientsActivity.class);
     			startActivity(i);  
                
         		}
@@ -47,8 +48,8 @@ public class mscreenactivity extends Mscreen1 {
         	@Override
         	public void onClick(View v){
         		//Calls the next HistoryActivity 
-        		Intent i = new Intent(mscreenactivity.this,HistoryActivity.class);
-    			startActivity(i);  
+        		//Intent i = new Intent(Mscreenactivity.this,HistoryActivity.class);
+    			//startActivity(i);  
                
         		}
         	});
@@ -57,8 +58,8 @@ public class mscreenactivity extends Mscreen1 {
         	@Override
         	public void onClick(View v){
         		//Calls the next BankActivity 
-        		Intent i = new Intent(mscreenactivity.this,BankActivity.class);
-    			startActivity(i);  
+        		Intent n = new Intent(Mscreenactivity.this,BankActivity.class);
+    			startActivity(n);  
                
         }
       });

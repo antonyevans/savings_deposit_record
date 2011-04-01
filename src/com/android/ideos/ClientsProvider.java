@@ -1,6 +1,7 @@
 package com.android.ideos;
 //this is my Content provider class (ClientsProvider)
 import static android.provider.BaseColumns._ID;
+
 import static com.android.ideos.Constants.AUTHORITY;
 import static com.android.ideos.Constants.CONTENT_URI;
 import static com.android.ideos.Constants.TABLE_NAME;
@@ -13,6 +14,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.TextUtils;
+
 
 public class ClientsProvider extends ContentProvider
 {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class Ideosactivity extends Mscreen1 {
     
-	//Declaring my Views for easier access later in the project
+	//Declaring my Views for easier access later in the class
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
@@ -43,7 +43,7 @@ public class Ideosactivity extends Mscreen1 {
         		if(username.equals("guest") && password.equals("guest")){
         			lblResult.setText("Login Successful.");
         			
-        			Intent i = new Intent(Ideosactivity.this,mscreenactivity.class);
+        			Intent i = new Intent(Ideosactivity.this,Mscreenactivity.class);
         			startActivity(i);  
         		}
         		else

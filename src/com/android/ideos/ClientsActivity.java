@@ -1,8 +1,10 @@
 package com.android.ideos;
 //this where i will use the content provider to help in the functionality of the different menus
 import static android.provider.BaseColumns._ID;
+
 import static com.android.ideos.Constants.CONTENT_URI;
-import static com.android.ideos.Constants.TITLE;
+import static com.android.ideos.Constants.FirstName;
+import static com.android.ideos.Constants.SecondName;
 import android.app.ListActivity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -16,18 +18,18 @@ import android.widget.Toast;
 
 
  public class ClientsActivity extends ListActivity {
- 
+	
  
  @Override
  public void onCreate(Bundle savedInstanceState) {
  super.onCreate(savedInstanceState);
  setContentView(R.layout.clients);
- addClient("" );
+ 
+ //an instance of the ClientsData
+ addClient ("Samuel" );
  Cursor cursor = getClients();
  showClients(cursor);
- }
- 
- 	
+}	
 	 	private static int[] TO = { R.id.rowid, R.id.title, };
 		private void showClients(Cursor cursor) {
 		 // Set up data binding
@@ -35,20 +37,25 @@ import android.widget.Toast;
 		 R.layout.listviewitem, cursor, FROM, TO);
 		 setListAdapter(adapter);
 		 }
+		
+		
+		//Running a query
 		private Cursor getClients() {
 			// Perform a managed query. The Activity will handle closing
 			// and re-querying the cursor when needed.
 			return managedQuery(CONTENT_URI, FROM, null, null, ORDER_BY);
 			}
- 	private static String[] FROM = { _ID, TITLE, };
- 	private static String ORDER_BY = "DESC" ;
+		private static String[] FROM = { _ID, FirstName, SecondName };
+		private static String ORDER_BY = "ASC" ;
 	
 	private void addClient(String string) {
 		 //Insert a new record into the Clients data source.
 		 // You would do something similar for delete and update.
 	ContentValues values = new ContentValues();
-	values.put(TITLE, string);
+	values.put(FirstName, string);
+	values.put(SecondName, string);
 	getContentResolver().insert(CONTENT_URI, values);
+	
 	}
 	
 	//calls the content menu layout
@@ -65,20 +72,25 @@ import android.widget.Toast;
       // TODO Auto-generated method stub
       switch(item.getItemId())
       {
+      // the menu button New Client and the functionality code will be implemented here.
        case(R.id.menu_new_client):
         Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
        
        ContentValues values = new ContentValues();
-       // can be left "" for adding a clients name
-       values.put("Constants.name", "Gatiru Samuel");
+       // can be left "blank" for adding a clients' name
+       values.put("Constants.firstname", "samuel");
+       values.put("Constants.secondname", "Gatiru");
        	        
        	 getContentResolver().insert(Constants.CONTENT_URI, values);
        	       
         break;
+        
+        // the menu button: Edit, and the functionality code will be implemented here.
        case(R.id.menu_edit):
         Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
         break; 
         
+        // the menu button: DElete, and the functionality code will be implemented here.
        case(R.id.menu_delete):
         Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
        
@@ -87,6 +99,7 @@ import android.widget.Toast;
         
        	break;
         
+        // the menu button: Search, and the functionality code will be implemented here.
        case(R.id.menu_search):
            Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
            break;
