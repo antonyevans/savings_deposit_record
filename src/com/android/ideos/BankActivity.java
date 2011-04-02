@@ -63,7 +63,9 @@ public class BankActivity extends Mscreen1{
         {
         	@Override
         	public void onClick(View v){
-        		//insert code to do here 
+        		//insert code to do here
+        		Intent i = new Intent(BankActivity.this,DepositWithdrawalActivity.class);
+    			startActivity(i);
         	}
         });
         //should call a content dialogue
@@ -72,6 +74,8 @@ public class BankActivity extends Mscreen1{
         	@Override
         	public void onClick(View v){
         		 //insert code to do here
+        		Intent i = new Intent(BankActivity.this,DepositWithdrawalActivity.class);
+    			startActivity(i);
         	}
         });
         btnhistory.setOnClickListener(new OnClickListener()
