@@ -48,8 +48,8 @@ public class Mscreenactivity extends Mscreen1 {
         	@Override
         	public void onClick(View v){
         		//Calls the next HistoryActivity 
-        		//Intent i = new Intent(Mscreenactivity.this,HistoryActivity.class);
-    			//startActivity(i);  
+        		Intent k = new Intent(Mscreenactivity.this,HistoryActivity.class);
+    			startActivity(k);  
                
         		}
         	});

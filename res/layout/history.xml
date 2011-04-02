@@ -4,12 +4,45 @@
   android:layout_height="fill_parent"
   android:orientation="vertical"
   >
-  <ListView
+   <LinearLayout android:layout_gravity="top" 
+    android:orientation="vertical" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/linearLayout" 
+    android:layout_width="fill_parent">
+        <TableLayout 
+        android:stretchColumns="*" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tableLayout1" 
+        android:layout_width="wrap_content">
+            <TableRow 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tableRow1">
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="Clients" 
+                android:id="@+id/Clients_button"></Button>
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="History" 
+                android:id="@+id/History_button"></Button>
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="Bank" 
+                android:id="@+id/Bank_button"></Button>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+     <ListView
     android:id="@+id/history"
     android:layout_width="fill_parent"
-    android:layout_height="0px"
+    android:layout_height="fill_parent"
     android:layout_weight="1"
     />
+  
   
 </LinearLayout>
 

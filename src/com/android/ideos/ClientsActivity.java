@@ -2,6 +2,7 @@ package com.android.ideos;
 //this where i will use the content provider to help in the functionality of the different menus
 import static android.provider.BaseColumns._ID;
 
+
 import static com.android.ideos.Constants.CONTENT_URI;
 import static com.android.ideos.Constants.FirstName;
 import static com.android.ideos.Constants.SecondName;
@@ -25,12 +26,13 @@ import android.widget.Toast;
  super.onCreate(savedInstanceState);
  setContentView(R.layout.clients);
  
- //an instance of the ClientsData
- addClient ("Samuel" );
+//an instance of the ClientsData
+ addClient ("Samuel Mwaura");
  Cursor cursor = getClients();
  showClients(cursor);
 }	
-	 	private static int[] TO = { R.id.rowid, R.id.title, };
+	 	
+		private static int[] TO = { R.id.rowid, R.id.title, };
 		private void showClients(Cursor cursor) {
 		 // Set up data binding
 		 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,

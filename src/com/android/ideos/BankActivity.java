@@ -13,6 +13,7 @@ public class BankActivity extends Mscreen1{
     private Button btnBank;
     private Button btnDeposit;
     private Button btnWithdrawal;
+    private Button btnhistory;
     /** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class BankActivity extends Mscreen1{
         btnBank = (Button)findViewById(R.id.Bank_button);
         btnDeposit = (Button)findViewById(R.id.deposit_button);
         btnWithdrawal = (Button)findViewById(R.id.withdrawal_button);
+        btnhistory = (Button)findViewById(R.id.history_button);
         
       //Set the events(action listeners)
         btnClients.setOnClickListener(new OnClickListener()
@@ -51,7 +53,7 @@ public class BankActivity extends Mscreen1{
         {
         	@Override
         	public void onClick(View v){
-        		//Calls itself
+        		//Calls itself thus remains in the same screen upon clicking it
         		Intent q = new Intent(BankActivity.this,BankActivity.class);
     			startActivity(q); 
         	}
@@ -70,6 +72,14 @@ public class BankActivity extends Mscreen1{
         	@Override
         	public void onClick(View v){
         		 //insert code to do here
+        	}
+        });
+        btnhistory.setOnClickListener(new OnClickListener()
+        {
+        	@Override
+        	public void onClick(View v){
+        		Intent i = new Intent(BankActivity.this,HistoryActivity.class);
+    			startActivity(i);	 
         	}
         });
 	}

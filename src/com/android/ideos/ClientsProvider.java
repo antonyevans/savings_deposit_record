@@ -1,11 +1,9 @@
 package com.android.ideos;
 //this is my Content provider class (ClientsProvider)
 import static android.provider.BaseColumns._ID;
-
 import static com.android.ideos.Constants.AUTHORITY;
 import static com.android.ideos.Constants.CONTENT_URI;
 import static com.android.ideos.Constants.TABLE_NAME;
-import com.android.ideos.ClientsData;
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
