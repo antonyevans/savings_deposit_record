@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="" 
-                android:id="@+id/edit_input"></EditText>
+                android:id="@+id/Clients_button"></EditText>
                 <Button 
                 android:layout_height="wrap_content" 
                 android:layout_width="fill_parent" 

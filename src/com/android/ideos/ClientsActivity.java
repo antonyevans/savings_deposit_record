@@ -1,8 +1,6 @@
 package com.android.ideos;
 //this where i will use the content provider to help in the functionality of the different menus
 import static android.provider.BaseColumns._ID;
-
-
 import static com.android.ideos.Constants.CONTENT_URI;
 import static com.android.ideos.Constants.FirstName;
 import static com.android.ideos.Constants.SecondName;
@@ -27,7 +25,7 @@ import android.widget.Toast;
  setContentView(R.layout.clients);
  
 //an instance of the ClientsData
- addClient ("Samuel Mwaura");
+ addClient ("");
  Cursor cursor = getClients();
  showClients(cursor);
 }	
@@ -54,6 +52,7 @@ import android.widget.Toast;
 		 //Insert a new record into the Clients data source.
 		 // You would do something similar for delete and update.
 	ContentValues values = new ContentValues();
+	values.put(_ID, 1);
 	values.put(FirstName, string);
 	values.put(SecondName, string);
 	getContentResolver().insert(CONTENT_URI, values);
@@ -80,8 +79,8 @@ import android.widget.Toast;
        
        ContentValues values = new ContentValues();
        // can be left "blank" for adding a clients' name
-       values.put("Constants.firstname", "samuel");
-       values.put("Constants.secondname", "Gatiru");
+       values.put(FirstName, "samuel");
+       values.put(SecondName, "Gatiru");
        	        
        	 getContentResolver().insert(Constants.CONTENT_URI, values);
        	       
