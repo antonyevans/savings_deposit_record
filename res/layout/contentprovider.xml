@@ -6,32 +6,32 @@ android:layout_height="fill_parent"
 android:orientation="horizontal"
 android:padding="10sp" >
 <TextView
-android:id="@+id/rowid"
+android:id="@+id/_ID"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" />
 <TextView
-android:id="@+id/rowidcolon"
+android:id="@+id/_IDcolon"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text=": "
-android:layout_toRightOf="@id/rowid" />
+android:layout_toRightOf="@id/_ID" />
 <TextView
-android:id="@+id/time"
+android:id="@+id/FirstName"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
-android:layout_toRightOf="@id/rowidcolon" />
+android:layout_toRightOf="@id/_IDcolon" />
 <TextView
-android:id="@+id/timecolon"
+android:id="@+id/FirstNamecolon"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text=": "
-android:layout_toRightOf="@id/time" />
+android:layout_toRightOf="@id/FirstName" />
 <TextView
-android:id="@+id/title"
+android:id="@+id/SecondName"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:ellipsize="end"
 android:singleLine="true"
 android:textStyle="italic"
-android:layout_toRightOf="@id/timecolon" />
+android:layout_toRightOf="@id/FirstNamecolon" />
 </RelativeLayout>

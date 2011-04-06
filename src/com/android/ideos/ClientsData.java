@@ -3,28 +3,34 @@ package com.android.ideos;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
- 
 
 //SQLiteOpenHelper class—is an Android helper class for database creation and version management
- public class ClientsData extends SQLiteOpenHelper {
+public class ClientsData extends SQLiteOpenHelper {
+	
 	 //defining the constants 
- private static final String DATABASE_NAME = "clients.db" ;
+ private static final String DATABASE_NAME = "sammy" ;
  private static final int DATABASE_VERSION = 1;
  public static final String TABLE_NAME = "clients" ;
-
+ 
+ //making track changes. note to me: sam 
+ private SQLiteDatabase sammy; 
+ private DataBaseHelper myDbHelper;
+ private final Context my_ctx;
+ 
 //Columns in the Clients database 
 public static final String _ID = "_id";
 public static final String FirstName = "firstname";
 public static final String SecondName = "secondname";
 //the uri and authority needed for the content provider
 public static final String AUTHORITY = "com.android.ideos" ;
- 
 
  
  //the constructor
  public ClientsData(Context ctx) 
  {
  super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
+ this.my_ctx = ctx;
+ 
  }
  
 //onCreate() method creates a new database if the required database is not present
@@ -41,6 +47,14 @@ public static final String AUTHORITY = "com.android.ideos" ;
  onCreate(db);
  }
  }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
  
  

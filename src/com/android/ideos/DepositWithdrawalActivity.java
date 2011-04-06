@@ -24,7 +24,7 @@ public class DepositWithdrawalActivity extends Mscreen1{
         	public void onClick(View v){
         		// Close the activity dialog
         		finish();
-        		}
+        	}
         	});
     }    
 }

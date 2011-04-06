@@ -25,7 +25,7 @@
         		  <category
         		  android:name="android.intent.category.DEFAULT"/>
         </intent-filter>
-       </activity> 
+        </activity> 
         <activity android:name=".ClientsActivity"
         		  android:label="@string/app_name">
         	<intent-filter>
@@ -35,10 +35,13 @@
         		  android:name="android.intent.category.DEFAULT"/>
         </intent-filter>
         </activity> 
-        
+       
        <activity android:name=".BankActivity"
         		  android:label="@string/app_name">
+       <activity android:name=".DataBaseHelper"
+        		  android:label="@string/app_name">
         	
+        </activity> 	
         </activity>
         <activity android:name=".HistoryActivity"
         		  android:label="@string/app_name">

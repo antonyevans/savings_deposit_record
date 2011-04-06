@@ -25,18 +25,21 @@ import android.widget.Toast;
  setContentView(R.layout.clients);
  
 //an instance of the ClientsData
- addClient ("");
+ //an example of a client added
+ addClient ("Samuel Mwaura");
+ 
  Cursor cursor = getClients();
  showClients(cursor);
 }	
-	 	
-		private static int[] TO = { R.id.rowid, R.id.title, };
-		private void showClients(Cursor cursor) {
-		 // Set up data binding
-		 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-		 R.layout.listviewitem, cursor, FROM, TO);
-		 setListAdapter(adapter);
-		 }
+ 
+	private static int[] TO = { R.id._ID, R.id.FirstName, R.id.SecondName, };
+	private void showClients(Cursor cursor) {
+	 // Set up data binding
+	 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+	 R.layout.listviewitem, cursor, FROM, TO);
+	 setListAdapter(adapter);
+	 } 	
+	
 		
 		
 		//Running a query
