@@ -1,3 +1,4 @@
+//NOT USING THIS CLASS AT THE MOMENT, MOVED TO DBAdapter
 package com.android.ideos;
 // A helper-class to represent the database.
 import android.content.Context;
@@ -13,9 +14,9 @@ public class ClientsData extends SQLiteOpenHelper {
  public static final String TABLE_NAME = "clients" ;
  
  //making track changes. note to me: sam 
- private SQLiteDatabase sammy; 
- private DataBaseHelper myDbHelper;
- private final Context my_ctx;
+// private SQLiteDatabase sammy; 
+ //private DataBaseHelper myDbHelper;
+ //private final Context my_ctx;
  
 //Columns in the Clients database 
 public static final String _ID = "_id";
@@ -29,7 +30,7 @@ public static final String AUTHORITY = "com.android.ideos" ;
  public ClientsData(Context ctx) 
  {
  super(ctx, DATABASE_NAME, null, DATABASE_VERSION);
- this.my_ctx = ctx;
+ //this.my_ctx = ctx;
  
  }
  
