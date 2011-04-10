@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:orientation="vertical"
+  
   >
- <ScrollView>
+ 
  <TextView
 android:id="@+id/empty"
 android:layout_width="fill_parent"
 android:layout_height="wrap_content" />
-</ScrollView>
- <ListView android:layout_weight="1" 
- android:layout_height="0px" 
- android:id="@+id/list" 
- android:layout_width="fill_parent">
- </ListView> 
+
+ <ListView 
+ android:drawSelectorOnTop="false" 
+ android:id="@id/android:list" 
+ android:layout_width="fill_parent" 
+ android:layout_height="fill_parent" 
+ android:layout_weight="1"></ListView> 
 </LinearLayout>
+
+        
+        
+

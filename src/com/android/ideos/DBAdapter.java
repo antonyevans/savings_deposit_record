@@ -43,7 +43,7 @@ public class DBAdapter {
  //CREATING TransactionsTable    
     private static final String DATABASE_CREATE_TRANSACTIONSTABLE =
         "create table TransactionsTable (_id integer primary key autoincrement, "
-    	+ "transId integer primary key autoincrement,"
+    	+ "transId integer,"
         + "Type boolean not null, DateTime text not null, " 
         + "Amount long not null);";
  //CREATING ClientsBalanceTable
@@ -106,9 +106,9 @@ public class DBAdapter {
         DBHelper.close();
     }
  
-    //---insert a title into the database---
+    //---insert a client and his info into the database---
 
-    public long insertTitle(String name, String surname, String mobile) 
+    public long insertClient(String name, String surname, String mobile) 
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_NAME, name);
@@ -116,7 +116,7 @@ public class DBAdapter {
         initialValues.put(KEY_MOBILE, mobile);
         return db.insert(DATABASE_CLIENTSTable, null, initialValues);
     }
-    public long insertTitle(String transId, String Type, String DateTime, String Amount) 
+    public long insertClientTransaction(String transId, String Type, String DateTime, String Amount) 
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_TRANSID, transId);
@@ -125,21 +125,21 @@ public class DBAdapter {
         initialValues.put(KEY_AMOUNT, Amount);
         return db.insert(DATABASE_TRANSACTIONS, null, initialValues);
     }
-    public long insertTitle(String Balance) 
+    public long insertClientBalance(String Balance) 
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_BALANCE, Balance);
         return db.insert(DATABASE_CLIENTSBALANCE, null, initialValues);
     }
  
-    //---deletes a particular title---
-    public boolean deleteTitle(long clientId) 
+    //---deletes a particular client---
+    public boolean deleteClient(long clientId) 
     {
         return db.delete(DATABASE_CLIENTSTable,KEY_CLIENTID + "=" + clientId, null) > 0;
     }
  
-    //---retrieves all the title---
-    public Cursor getAllTitles() 
+    //---retrieves all the clients---
+    public Cursor getAllClients() 
     {
         return db.query(DATABASE_CLIENTSTable, new String[] {
         		KEY_CLIENTID, 
@@ -167,6 +167,7 @@ public class DBAdapter {
                 null, 
                 null);
     }
+    //made comments will be taken care of i.e the clientsbalanceRecords
         //querying clientsbalancetable
     //public Cursor getAllBalanceRecords() {
         
@@ -176,8 +177,8 @@ public class DBAdapter {
                 //null);
     //}
  
-    //---retrieves a particular title---
-    public Cursor getTitle(long clientId) throws SQLException 
+    //---retrieves a particular client---
+    public Cursor getClient(long clientId) throws SQLException 
     {
         Cursor mCursor =
                 db.query(true, DATABASE_CLIENTSTable, new String[] {
@@ -198,8 +199,8 @@ public class DBAdapter {
         return mCursor;
     }
  
-    //---updates a record---
-    public boolean updateTitle(long clientId, String name, 
+    //---updates a client's details---
+    public boolean updateClient(long clientId, String name, 
     String surname, String mobile) 
     {
         ContentValues args = new ContentValues();

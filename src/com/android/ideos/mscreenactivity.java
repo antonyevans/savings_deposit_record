@@ -9,15 +9,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-
+import android.util.Log; 
 public class Mscreenactivity extends Mscreen1 {
-    
+	   
 	//Declaring my Views for easier access later in the project
     
     private Button btnClients;
     private Button btnHistory;
     private Button btnBank;
     /** Called when the activity is first created. */
+    private static final String TAG = "Mscreenactivity";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class Mscreenactivity extends Mscreen1 {
         	public void onClick(View v){
         //Calls the next class (ClientsActivity) 
         		
-    			Intent i = new Intent(Mscreenactivity.this,DBAdapter.class);
+    			Intent i = new Intent(Mscreenactivity.this,ClientsActivity.class);
     			startActivity(i);  
                
         		}
@@ -60,7 +61,9 @@ public class Mscreenactivity extends Mscreen1 {
         		//Calls the next BankActivity 
         		Intent n = new Intent(Mscreenactivity.this,BankActivity.class);
     			startActivity(n);  
-               
+               //enabling loging of errors in logcat
+    			String Mscreenactivity=null;
+				Log.e(TAG, "whole class" + Mscreenactivity);
         }
       });
     }

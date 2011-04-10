@@ -1,4 +1,4 @@
-package com.android.ideos;
+/**package com.android.ideos;
 //this class will take care of the different constants that will be used in the project. will use FirstName in place of name/client
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -15,3 +15,4 @@ public interface Constants extends BaseColumns {
 public static final Uri CONTENT_URI = Uri.parse("content://"
 + AUTHORITY + "/" + TABLE_NAME);
 }
+**/

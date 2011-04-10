@@ -1,5 +1,6 @@
 //NOT USING THIS CLASS AT THE MOMENT, MOVED TO DBAdapter
 package com.android.ideos;
+/**
 // A helper-class to represent the database.
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -48,6 +49,7 @@ public static final String AUTHORITY = "com.android.ideos" ;
  onCreate(db);
  }
  }
+ **/
  
  
  

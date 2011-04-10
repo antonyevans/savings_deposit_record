@@ -1,4 +1,4 @@
-package com.android.ideos;
+/**package com.android.ideos;
 //this is my Content provider class (ClientsProvider)
 import static android.provider.BaseColumns._ID;
 import static com.android.ideos.Constants.AUTHORITY;
@@ -18,10 +18,10 @@ public class ClientsProvider extends ContentProvider
 {
 private static final int CLIENTS = 1;
 private static final int CLIENTS_ID = 2;
-/** The MIME type of a directory of clients */
+ //The MIME type of a directory of clients 
 private static final String CONTENT_TYPE
 = "vnd.android.cursor.dir/vnd.android.client" ;
-/** The MIME type of a single client */
+ The MIME type of a single client 
 private static final String CONTENT_ITEM_TYPE
 = "vnd.android.cursor.item/vnd.android.client" ;
 private ClientsData clients;
@@ -151,7 +151,7 @@ public int update(Uri uri, ContentValues values, String selection,
     getContext().getContentResolver().notifyChange(uri, null);
     return count;
 }
-    /** Append an id test to a SQL selection expression */
+    // Append an id test to a SQL selection expression 
     private String appendRowId(String selection, long id) {
        return _ID + "=" + id
              + (!TextUtils.isEmpty(selection)
@@ -160,3 +160,4 @@ public int update(Uri uri, ContentValues values, String selection,
       
 }
 }
+**/

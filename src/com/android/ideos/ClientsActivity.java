@@ -1,4 +1,13 @@
 package com.android.ideos;
+import android.app.ListActivity;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+
+
+/**will remove this in any case made them comments for refence of my old work
 //this where i will use the content provider to help in the functionality of the different menus
 import static android.provider.BaseColumns._ID;
 import static com.android.ideos.Constants.CONTENT_URI;
@@ -25,6 +34,7 @@ import android.widget.Toast;
  setContentView(R.layout.clients);
  
 //an instance of the ClientsData
+ ClientsData db = new ClientsData(this); 
  //an example of a client added
  addClient ("Samuel Mwaura");
  
@@ -32,7 +42,7 @@ import android.widget.Toast;
  showClients(cursor);
 }	
  
-	private static int[] TO = { R.id._ID, R.id.FirstName, R.id.SecondName, };
+	private static int[] TO = { R.id._ID, R.id.name, R.id.surname, };
 	private void showClients(Cursor cursor) {
 	 // Set up data binding
 	 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
@@ -98,8 +108,8 @@ import android.widget.Toast;
        case(R.id.menu_delete):
         Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
        
-       Uri ClientsDataUri=Uri.parse("content://ClientsData");
-       	getContentResolver().delete(ClientsDataUri,"ClientID=?",new String[]{"1"});
+       Uri DBAdapterUri=Uri.parse("content://DBAdapter");
+       	getContentResolver().delete(DBAdapterUri,"ClientID=?",new String[]{"1"});
         
        	break;
         
@@ -115,3 +125,94 @@ import android.widget.Toast;
  }
 	
 }
+*
+*/
+public class ClientsActivity extends ListActivity {
+	 
+	long id;
+	@Override
+	 public void onCreate(Bundle savedInstanceState) {
+	 super.onCreate(savedInstanceState);
+	 
+	 setContentView(R.layout.clients);
+	 //an instance of the DBAdapter class
+	 DBAdapter db = new DBAdapter(this); 
+	
+	 //---add two clients---
+     db.open();        
+     
+     id = db.insertClient(
+     		"Samuel",
+     		"David",
+     		"07564324568");        
+     id = db.insertClient(
+     		"Kioko",
+     		"Kilokumi",
+     		"07677667734");
+     db.close();
+
+     //---get all clients---
+     db.open();
+     Cursor c = db.getAllClients();
+     if (c.moveToFirst())
+     {
+         do { 
+        	
+        	 DisplayClient(c);
+        	 
+         } while (c.moveToNext());
+     }
+     db.close();
+    
+
+     }
+	public void DisplayClient(Cursor c) {
+     	Toast.makeText(this,
+                 "id: " + c.getString(0) + "\n" +
+                 "NAME: " + c.getString(1) + "\n" +
+                 "SURNAME: " + c.getString(2) + "\n" +
+                 "MOBILE:  " + c.getString(3),
+                 Toast.LENGTH_LONG).show(); 
+         } 
+
+
+
+
+// the layout of the menu as seen in the menu.xml file
+	 @Override
+     public boolean onOptionsItemSelected(MenuItem item) {
+      // TODO Auto-generated method stub
+      switch(item.getItemId())
+      {
+      // the menu button New Client and the functionality code will be implemented here.
+       case(R.id.menu_new_client):
+        Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
+       	        
+        break;
+        
+        // the menu button: Edit, and the functionality code will be implemented here.
+       case(R.id.menu_edit):
+        Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
+        break; 
+        
+        // the menu button: DElete, and the functionality code will be implemented here.
+       case(R.id.menu_delete):
+        Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
+       
+       	break;
+        
+        // the menu button: Search, and the functionality code will be implemented here.
+       case(R.id.menu_search):
+           Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
+           break;
+      } 
+      return true;
+      
+    
+     
+ }
+     } 
+
+     
+     	
+
