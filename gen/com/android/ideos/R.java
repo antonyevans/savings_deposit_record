@@ -27,6 +27,7 @@ public final class R {
         public static final int _ID=0x7f06000c;
         public static final int _IDcolon=0x7f06000d;
         public static final int add_button=0x7f060013;
+        public static final int btnSendSMS=0x7f060021;
         public static final int cancel_button=0x7f06001d;
         public static final int deposit_button=0x7f060007;
         public static final int edit_input=0x7f060014;
@@ -35,10 +36,10 @@ public final class R {
         public static final int history_button=0x7f060009;
         public static final int linearLayout=0x7f060000;
         public static final int login_button=0x7f06001c;
-        public static final int menu_delete=0x7f060021;
-        public static final int menu_edit=0x7f060020;
-        public static final int menu_new_client=0x7f06001f;
-        public static final int menu_search=0x7f060022;
+        public static final int menu_delete=0x7f060024;
+        public static final int menu_edit=0x7f060023;
+        public static final int menu_new_client=0x7f060022;
+        public static final int menu_search=0x7f060025;
         public static final int minus_button=0x7f060016;
         public static final int password=0x7f06001b;
         public static final int result=0x7f06001e;
@@ -47,6 +48,8 @@ public final class R {
         public static final int tableRow2=0x7f060012;
         public static final int text=0x7f06000b;
         public static final int toastView=0x7f060011;
+        public static final int txtMessage=0x7f060020;
+        public static final int txtPhoneNo=0x7f06001f;
         public static final int username=0x7f06001a;
         public static final int withdrawal_button=0x7f060008;
     }
@@ -60,6 +63,7 @@ public final class R {
         public static final int listviewitem=0x7f030006;
         public static final int main=0x7f030007;
         public static final int mscreen=0x7f030008;
+        public static final int sms=0x7f030009;
     }
     public static final class menu {
         public static final int menu=0x7f050000;
