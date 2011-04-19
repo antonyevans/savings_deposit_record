@@ -44,7 +44,7 @@
         		  android:name="android.intent.category.DEFAULT"/>
         </intent-filter>
         </activity> 
-        <activity android:name=".ClientsActivity"
+        <activity android:name=".List"
         		  android:label="@string/app_name">
         	<intent-filter>
         		  <action

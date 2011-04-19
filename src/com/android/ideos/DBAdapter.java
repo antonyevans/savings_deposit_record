@@ -55,6 +55,7 @@ public class DBAdapter {
     private final Context context;  
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;
+    
  
     public DBAdapter(Context ctx) 
     {
@@ -62,7 +63,7 @@ public class DBAdapter {
         DBHelper = new DatabaseHelper(context);
     }
  
-    private static class DatabaseHelper extends SQLiteOpenHelper 
+    public class DatabaseHelper extends SQLiteOpenHelper 
     {
         DatabaseHelper(Context context) 
         {
@@ -98,6 +99,7 @@ public class DBAdapter {
     {
         db = DBHelper.getWritableDatabase();
         return this;
+        
     }
  
     //---closes the database---    
@@ -221,4 +223,9 @@ public class DBAdapter {
     	        return db.update(DATABASE_TRANSACTIONS, args, 
     	                        KEY_CLIENTID + "=" + clientId, null) > 0;
     	    }
+
+	public SQLiteDatabase getWritableDatabase() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

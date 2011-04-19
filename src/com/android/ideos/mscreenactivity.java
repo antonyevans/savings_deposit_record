@@ -38,7 +38,7 @@ public class Mscreenactivity extends Mscreen1 {
         	public void onClick(View v){
         //Calls the next class (ClientsActivity) 
         		
-    			Intent i = new Intent(Mscreenactivity.this,ClientsActivity.class);
+    			Intent i = new Intent(Mscreenactivity.this,List.class);
     			startActivity(i);  
                
         		}
