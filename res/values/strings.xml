@@ -2,9 +2,24 @@
 <resources>
     
     <string name="app_name">Ideosapp</string>
+    <string name="no_clients">No Clients </string>
     <string name="mscreen">To Do Tabs</string>
     <string name="screen_name">Clients</string>
-    <string name="empty">No Clients</string>
+    
     <string name="list">List of Clients</string>
+    
+    <string name="add_new">Add New Client</string>
+	<string name="Deposit">Deposit</string>
+	<string name="cancel">Cancel</string>
+	
+	<string name="menu_insert">Add Client</string>
+	<string name="menu_delete">Delete Client</string>
+	<string name="menu_deposit">Deposit</string>
+	<string name="menu_withdraw">Withdraw</string>
+	
+	 <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="mobile">Mobile</string>
+    <string name="done">Done</string>
    </resources>
  

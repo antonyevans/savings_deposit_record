@@ -38,7 +38,7 @@ public class Mscreenactivity extends Mscreen1 {
         	public void onClick(View v){
         //Calls the next class (ClientsActivity) 
         		
-    			Intent i = new Intent(Mscreenactivity.this,List.class);
+    			Intent i = new Intent(Mscreenactivity.this,ClientsActivity.class);
     			startActivity(i);  
                
         		}
@@ -67,33 +67,33 @@ public class Mscreenactivity extends Mscreen1 {
         }
       });
     }
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-         MenuInflater myMenuInflater = getMenuInflater();
-         myMenuInflater.inflate(R.menu.menu, menu);
-            return true;
-        }
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-         // TODO Auto-generated method stub
-         switch(item.getItemId())
-         {
-          case(R.id.menu_new_client):
-           Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
-           break;
-          case(R.id.menu_edit):
-           Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
-           break; 
-          case(R.id.menu_delete):
-           Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
-           break;
-          case(R.id.menu_search):
-              Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
-              break;
-         } 
-         return true;
-         
-       
-        
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+     MenuInflater myMenuInflater = getMenuInflater();
+     myMenuInflater.inflate(R.menu.menu, menu);
+        return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+     // TODO Auto-generated method stub
+     switch(item.getItemId())
+     {
+      case(R.id.menu_new_client):
+       Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
+       break;
+      case(R.id.menu_edit):
+       Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
+       break; 
+      case(R.id.menu_delete):
+       Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
+       break;
+      case(R.id.menu_search):
+          Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
+          break;
+     } 
+     return true;
+     
+   
+    
+}
 }

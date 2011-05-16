@@ -1,270 +1,229 @@
 package com.android.ideos;
+
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.CursorAdapter;
-import android.widget.ListAdapter;
-import android.widget.Toast;
-
-
-
-/**will remove this in any case made them comments for reference of my old work
-//this where i will use the content provider to help in the functionality of the different menus
-import static android.provider.BaseColumns._ID;
-import static com.android.ideos.Constants.CONTENT_URI;
-import static com.android.ideos.Constants.FirstName;
-import static com.android.ideos.Constants.SecondName;
-import android.app.ListActivity;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
-
-
- public class ClientsActivity extends ListActivity {
-	
- 
- @Override
- public void onCreate(Bundle savedInstanceState) {
- super.onCreate(savedInstanceState);
- setContentView(R.layout.clients);
- 
-//an instance of the ClientsData
- ClientsData db = new ClientsData(this); 
- //an example of a client added
- addClient ("Samuel Mwaura");
- 
- Cursor cursor = getClients();
- showClients(cursor);
-}	
- 
-	private static int[] TO = { R.id._ID, R.id.name, R.id.surname, };
-	private void showClients(Cursor cursor) {
-	 // Set up data binding
-	 SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-	 R.layout.listviewitem, cursor, FROM, TO);
-	 setListAdapter(adapter);
-	 } 	
-	
-		
-		
-		//Running a query
-		private Cursor getClients() {
-			// Perform a managed query. The Activity will handle closing
-			// and re-querying the cursor when needed.
-			return managedQuery(CONTENT_URI, FROM, null, null, ORDER_BY);
-			}
-		private static String[] FROM = { _ID, FirstName, SecondName };
-		private static String ORDER_BY = "ASC" ;
-	
-	private void addClient(String string) {
-		 //Insert a new record into the Clients data source.
-		 // You would do something similar for delete and update.
-	ContentValues values = new ContentValues();
-	values.put(_ID, 1);
-	values.put(FirstName, string);
-	values.put(SecondName, string);
-	getContentResolver().insert(CONTENT_URI, values);
-	
-	}
-	
-	//calls the content menu layout
-	 @Override
-     public boolean onCreateOptionsMenu(Menu menu) {
-      MenuInflater myMenuInflater = getMenuInflater();
-      myMenuInflater.inflate(R.menu.menu, menu);
-         return true;
-     }
- 
-	 // the layout of the menu as seen in the menu.xml file
-	 @Override
-     public boolean onOptionsItemSelected(MenuItem item) {
-      // TODO Auto-generated method stub
-      switch(item.getItemId())
-      {
-      // the menu button New Client and the functionality code will be implemented here.
-       case(R.id.menu_new_client):
-        Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
-       
-       ContentValues values = new ContentValues();
-       // can be left "blank" for adding a clients' name
-       values.put(FirstName, "samuel");
-       values.put(SecondName, "Gatiru");
-       	        
-       	 getContentResolver().insert(Constants.CONTENT_URI, values);
-       	       
-        break;
-        
-        // the menu button: Edit, and the functionality code will be implemented here.
-       case(R.id.menu_edit):
-        Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
-        break; 
-        
-        // the menu button: DElete, and the functionality code will be implemented here.
-       case(R.id.menu_delete):
-        Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
-       
-       Uri DBAdapterUri=Uri.parse("content://DBAdapter");
-       	getContentResolver().delete(DBAdapterUri,"ClientID=?",new String[]{"1"});
-        
-       	break;
-        
-        // the menu button: Search, and the functionality code will be implemented here.
-       case(R.id.menu_search):
-           Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
-           break;
-      } 
-      return true;
-      
-    
-     
- }
-	
-}
-*
-*/
 
 public class ClientsActivity extends ListActivity {
+	private static final int INSERT_ID = Menu.FIRST;
+    private static final int DELETE_ID = Menu.FIRST + 1;
+    private static final int DEPOSIT_ID = Menu.FIRST + 2;
+    private static final int WITHDRAW_ID = Menu.FIRST + 3;
+    private static final int ACTIVITY_CREATE=0;
+    private static final int ACTIVITY_EDIT=1;
+   String clientname;
+    
+protected DBAdapter db;
 	
-
-	protected DBAdapter db;
-	protected CursorAdapter dataSource;
-	protected ListAdapter adapter;
-	//private static final String columns[] = { "name", "surname"};
+	//protected ListAdapter adapter;
+    private DBAdapter mDbHelper;
+	
+	
 	//private static final String TAGG = "ClientsActivity";
-	
-	 
-	
 	/** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) 
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = new DBAdapter(this);
-       /*DataBaseHelper helper = new DataBaseHelper(this);
-        db = helper.getWritableDatabase();
-        Cursor data = db.query("clientstable", columns,
-        		 null, null, null, null, null);
-        dataSource = new SimpleCursorAdapter(this,
-        		 R.layout.clients, data, columns,
-        		 new int[] { R.id.name, R.id.surname });
-        
-        setListAdapter(dataSource);*/
-        db.open();
-        Long rowID = db.insertClient("Adera", "Dan", "0727858191");
-        db.close();
-        
-        displayclients(rowID);
-        
-	 }
-	 
-    private void displayclients(long clientId) 
-    {
-		// TODO Auto-generated method stub
-    	db.open();
-    	Cursor results = db.getClient(clientId);
-    	if (results.moveToFirst())
-    	{
-    		Toast.makeText(this, "Name: "+results.getString(1)+"  "+results.getString(2), Toast.LENGTH_LONG).show();
-    	}
-		
-	
-
-	//{Log.e(TAGG, null);}   		
-       
-}
-
+        setContentView(R.layout.clients);
+        mDbHelper = new DBAdapter(this);
+        mDbHelper.open();
+        fillData();
+        registerForContextMenu(getListView());
+    }
+    private void fillData() {
+        Cursor clientsCursor = mDbHelper.getAllClients();
+        startManagingCursor(clientsCursor);
     
+ // Create an array to specify the fields we want to display in the list (name and Surname)
+  
+    String[] from = new String[]{DBAdapter.KEY_NAME};
+   
+    
+ // and an array of the fields we want to bind those fields to (in this case just text1)
+    int[] to = new int[]{R.id.client1};
+   
 
-	/** long id;
-	
-	 //---add two clients---
-     db.open();        
+ // Now create a simple cursor adapter and set it to display
+    SimpleCursorAdapter clientstable = 
+        new SimpleCursorAdapter(this, R.layout.clients_row, clientsCursor, from, to);
+     setListAdapter(clientstable);
      
-     id = db.insertClient(
-     		"Samuel",
-     		"David",
-     		"07564324568");        
-     id = db.insertClient(
-     		"Kioko",
-     		"Kilokumi",
-     		"07677667734");
-     db.close();
-
-     //---get all clients---
-     db.open();
-     Cursor c = db.getAllClients();
-     if (c.moveToFirst())
-     {
-         do { 
-        	
-        	 DisplayClient(c);
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        menu.add(0, INSERT_ID, 0, R.string.menu_insert);
+        return true;
+       
+    }
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        switch(item.getItemId()) {
+            case INSERT_ID:
+            
+            	
+                createClient();
+                return true;
+            
+        }
+        return super.onMenuItemSelected(featureId, item);
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+            ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        
+        menu.add(0, DELETE_ID, 0, R.string.menu_delete);
+        menu.add(1, DEPOSIT_ID, 1, R.string.menu_deposit);
+        menu.add(2, WITHDRAW_ID, 2, R.string.menu_withdraw);
+        
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case DELETE_ID:
+                AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+                mDbHelper.deleteClient(info.id);
+                fillData();
+                return true;
+                
+      
+       
+         case DEPOSIT_ID:
         	 
-         } while (c.moveToNext());
-     }
-     db.close();
+        	
+        	
+        	 
+        	 AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        	 alert.setTitle("Deposit");
+        	 alert.setMessage("Enter Amount to Deposit");
+        	 
+        	 
+        	 
+        	 // Set an EditText view to get user input 
+        	 final EditText input = new EditText(this);
+        	 alert.setView(input);
+
+        	 alert.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+        	 public void onClick(DialogInterface dialog, int whichButton) {
+        	   String value = input.getText().toString();
+        	   //parsed amount from long to string for compatibility issues with .getText
+        	   Long Amount = Long.parseLong(value);
+        	  mDbHelper.updateDepositTransactions(clientname, Amount);
+        	  Toast.makeText(getApplicationContext(), "Deposited "+input.getText().toString(), Toast.LENGTH_LONG).show();
+        	 
+        	  
+        	   // Do something with value and ok button
+        	   
+        	   }
+        	 });
+
+        	 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        	   public void onClick(DialogInterface dialog, int whichButton) {
+        	     // Canceled.
+        		   
+                       finish();
+        	   }
+        	 });
+
+        	 alert.show();
+        }       
+                   return super.onContextItemSelected(item);         
+    }       
+    private void createClient() {
+        Intent i = new Intent(this, ClientEdit.class);
+        startActivityForResult(i, ACTIVITY_CREATE);
+    }
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long _id) {
+        super.onListItemClick(l, v, position, _id);
+        TextView name = (TextView)v; 
+        
+        Toast.makeText(getApplicationContext(), "item selected "+name.getText().toString(), Toast.LENGTH_LONG).show();
     
+        Intent i = new Intent(this, ClientEdit.class);
+        i.putExtra(DBAdapter.KEY_CLIENTID, _id);
+        startActivityForResult(i, ACTIVITY_EDIT);
+        
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        fillData();
+       
 
-     }
-	public void DisplayClient(Cursor c) {
-     	Toast.makeText(this,
-                 "id: " + c.getString(0) + "\n" +
-                 "NAME: " + c.getString(1) + "\n" +
-                 "SURNAME: " + c.getString(2) + "\n" +
-                 "MOBILE:  " + c.getString(3),
-                 Toast.LENGTH_LONG).show(); 
-         } 
-
-**/
-
-
-//calls the content menu layout
- @Override
- public boolean onCreateOptionsMenu(Menu menu) {
-  MenuInflater myMenuInflater = getMenuInflater();
-  myMenuInflater.inflate(R.menu.menu, menu);
-     return true;
- }
-
- // the layout of the menu as seen in the menu.xml file
- @Override
- public boolean onOptionsItemSelected(MenuItem item) {
-  // TODO Auto-generated method stub
-  switch(item.getItemId())
-  {
-  // the menu button New Client and the functionality code will be implemented here.
-   case(R.id.menu_new_client):
-    Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
+    }
+       
+       
+       
+        
+       
+      
    
    
-    break;
-    
-    // the menu button: Edit, and the functionality code will be implemented here.
-   case(R.id.menu_edit):
-    Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
-    break; 
-    
-    // the menu button: DElete, and the functionality code will be implemented here.
-   case(R.id.menu_delete):
-    Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
+
+
+  
+    //calls the options menu layout(non-Javadoc)
+   /* @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+   */
+  /* @Override
+   public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater myMenuInflater = getMenuInflater();
+    myMenuInflater.inflate(R.menu.menu, menu);
+       return true;
+   }
+
+   // the layout of the options menu as seen in the menu.xml file
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item) {
+    // TODO Auto-generated method stub
+    switch(item.getItemId())
+    {
+    // the menu button New Client and the functionality code will be implemented here.
+     case(R.id.menu_new_client):
+      Toast.makeText(this, "New client", Toast.LENGTH_LONG).show();
+     
+     
+      break;
+      
+      // the menu button: Edit, and the functionality code will be implemented here.
+     case(R.id.menu_edit):
+      Toast.makeText(this, "Edit", Toast.LENGTH_LONG).show();
+      break; 
+      
+      // the menu button: DElete, and the functionality code will be implemented here.
+     case(R.id.menu_delete):
+      Toast.makeText(this, "Delete", Toast.LENGTH_LONG).show();
+     
+     
+     	break;
+      
+      // the menu button: Search, and the functionality code will be implemented here.
+     case(R.id.menu_search):
+         Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
+         break;
+    } 
+    return true;
+   }
+*/
    
-   
-   	break;
-    
-    // the menu button: Search, and the functionality code will be implemented here.
-   case(R.id.menu_search):
-       Toast.makeText(this, "Search", Toast.LENGTH_LONG).show();
-       break;
-  } 
-  return true;
- }
 }
 

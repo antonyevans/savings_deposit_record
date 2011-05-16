@@ -1,4 +1,5 @@
 package com.android.ideos;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -28,7 +29,7 @@ public class DBAdapter {
     public static final String KEY_BALANCE = "Balance";
     
     private static final String TAG = "DBAdapter";
- 
+ //the database name and  the tables names
     private static final String DATABASE_NAME = "radicalfinance";
     private static final String DATABASE_CLIENTSTable = "clientstable";
     private static final String DATABASE_TRANSACTIONS = "TransactionsTable";
@@ -44,7 +45,8 @@ public class DBAdapter {
     private static final String DATABASE_CREATE_TRANSACTIONSTABLE =
         "create table TransactionsTable (_id integer primary key autoincrement, "
     	+ "transId integer,"
-        + "Type boolean not null, DateTime text not null, " 
+    	+ "name text not null,"
+        + "Type text not null, DateTime text not null, " 
         + "Amount long not null);";
  //CREATING ClientsBalanceTable
     private static final String DATABASE_CREATE_CLIENTSBALANCETABLE =
@@ -102,13 +104,9 @@ public class DBAdapter {
         
     }
  
-    //---closes the database---    
-    public void close() 
-    {
-        DBHelper.close();
-    }
+  
  
-    //---insert a client and his info into the database---
+    //---insert a client and his info into the database (name,surname,mobile)---
 
     public long insertClient(String name, String surname, String mobile) 
     {
@@ -116,8 +114,11 @@ public class DBAdapter {
         initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_SURNAME, surname);
         initialValues.put(KEY_MOBILE, mobile);
+        
         return db.insert(DATABASE_CLIENTSTable, null, initialValues);
     }
+    
+    //create a clients transaction
     public long insertClientTransaction(String transId, String Type, String DateTime, String Amount) 
     {
         ContentValues initialValues = new ContentValues();
@@ -125,19 +126,21 @@ public class DBAdapter {
         initialValues.put(KEY_TYPE, Type);
         initialValues.put(KEY_DATETIME, DateTime);
         initialValues.put(KEY_AMOUNT, Amount);
+        
         return db.insert(DATABASE_TRANSACTIONS, null, initialValues);
     }
     public long insertClientBalance(String Balance) 
     {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_BALANCE, Balance);
+        
         return db.insert(DATABASE_CLIENTSBALANCE, null, initialValues);
     }
  
     //---deletes a particular client---
-    public boolean deleteClient(long clientId) 
+    public boolean deleteClient(long _id) 
     {
-        return db.delete(DATABASE_CLIENTSTable,KEY_CLIENTID + "=" + clientId, null) > 0;
+        return db.delete(DATABASE_CLIENTSTable,KEY_CLIENTID + "=" + _id, null) > 0;
     }
  
     //---retrieves all the clients---
@@ -180,7 +183,7 @@ public class DBAdapter {
     //}
  
     //---retrieves a particular client---
-    public Cursor getClient(long clientId) throws SQLException 
+    public Cursor getClient(long rowid) throws SQLException 
     {
         Cursor mCursor =
                 db.query(true, DATABASE_CLIENTSTable, new String[] {
@@ -189,7 +192,7 @@ public class DBAdapter {
                 		KEY_SURNAME,
                 		KEY_MOBILE
                 		}, 
-                		KEY_CLIENTID + "=" + clientId, 
+                		KEY_CLIENTID + "=" + rowid, 
                 		null,
                 		null, 
                 		null, 
@@ -202,17 +205,18 @@ public class DBAdapter {
     }
  
     //---updates a client's details---
-    public boolean updateClient(long clientId, String name, 
+    public boolean updateClient(long rowid, String name, 
     String surname, String mobile) 
     {
         ContentValues args = new ContentValues();
         args.put(KEY_NAME, name);
         args.put(KEY_SURNAME, surname);
         args.put(KEY_MOBILE, mobile);
+        
         return db.update(DATABASE_CLIENTSTable, args, 
-                        KEY_CLIENTID + "=" + clientId, null) > 0;
+                        KEY_CLIENTID + "=" + rowid, null) > 0;
     }
-    public boolean updateTransactions(long clientId, long transId, String Type, 
+    public boolean updateTransactions(long _id, long transId, String Type,
     	    String DateTime, long Amount) 
     	    {
     	        ContentValues args = new ContentValues();
@@ -221,11 +225,33 @@ public class DBAdapter {
     	        args.put(KEY_DATETIME, DateTime);
     	        args.put (KEY_AMOUNT, Amount);
     	        return db.update(DATABASE_TRANSACTIONS, args, 
-    	                        KEY_CLIENTID + "=" + clientId, null) > 0;
+    	                        KEY_CLIENTID + "=" + _id, null) > 0;
     	    }
+  public boolean updateDepositTransactions(String name,  long Amount)
+  {	
+	  ContentValues args = new ContentValues();
+	  args.put(KEY_NAME, name);
+	 
+	  args.put(KEY_AMOUNT, Amount);
+	 return db.update(DATABASE_TRANSACTIONS, args, KEY_NAME + "=" + name, null) > 0;
+  }
+		//updating the history transactions made.
+	public boolean updateHistoryTransactions(String name, long Amount, String DateTime)
+	{
+		ContentValues args = new ContentValues();
+		args.put(KEY_NAME, name);
+		args.put(KEY_AMOUNT, Amount);
+		args.put(KEY_DATETIME, DateTime);
+		return db.update(DATABASE_TRANSACTIONS, args, KEY_NAME + "=" + name, null) > 0;
+	}
 
-	public SQLiteDatabase getWritableDatabase() {
+    public SQLiteDatabase getWritableDatabase() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+    //---closes the database---    
+    public void close() 
+    {
+        DBHelper.close();
+    }
 }
