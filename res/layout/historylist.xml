@@ -16,13 +16,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:textColor="#FFFFFF"/>
-		<TextView
-			android:id="@+id/mobile"
-			android:layout_marginLeft="6px"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:textColor="#FFFFFF"
-		    android:layout_toRightOf="@id/clientName"/>
+		
 		<TextView
 			android:id="@+id/Type"
 		    android:layout_width="wrap_content"

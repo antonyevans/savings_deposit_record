@@ -20,7 +20,7 @@ import android.util.Log;
 public class DBAdapter {
 	//defining columns(fields) in all 3 tables
 	public static final String KEY_CLIENTID = "_id";
-	public static final String KEY_TRANSID = "transId";
+	public static final String KEY_TRANSID = "_id";
     public static final String KEY_NAME = "name";
     public static final String KEY_SURNAME = "surname";
     public static final String KEY_MOBILE= "mobile"; 
@@ -74,7 +74,7 @@ public class DBAdapter {
       {
           DBHelper.close();
       }
-		
+     
 	
      
       public DBAdapter(Context ctx) 
@@ -136,10 +136,11 @@ public class DBAdapter {
    
     
     //create a clients transaction
-    public long insertClientTransaction(String Type, String DateTime1, long Amount) 
+    public long insertClientTransaction(String name, String Type, String DateTime1, long Amount) 
     {
         ContentValues initialValues = new ContentValues();
        // initialValues.put(KEY_TRANSID, transId);
+        initialValues.put(KEY_NAME, name);
         initialValues.put(KEY_TYPE, Type);
         initialValues.put(KEY_DATETIME, DateTime1);
         initialValues.put(KEY_AMOUNT, Amount);
@@ -194,12 +195,31 @@ public class DBAdapter {
     //in use in the historyActivity.
     public Cursor getClientTransactions() {
     	return db.query(DATABASE_TRANSACTIONS, new String[] {
+    			KEY_TRANSID,
     			KEY_NAME,
     			KEY_TYPE,
     			KEY_DATETIME,
     			KEY_AMOUNT
     	},null, null, null, null, null);
     }
+    public Cursor getClientTransaction (long rowid) throws SQLException {
+    	 Cursor mCursor = db.query(true, DATABASE_TRANSACTIONS, new String[] {
+    	
+    			KEY_TRANSID ,
+    			KEY_NAME,
+    			KEY_TYPE,
+    			KEY_DATETIME,
+    			KEY_AMOUNT
+    			},
+    			KEY_TRANSID + "=" + rowid,
+    			null, null, null, null, null);
+    	 if (mCursor != null) {
+             mCursor.moveToFirst();
+         }
+         return mCursor;
+        
+     }
+    
     //made comments will be taken care of i.e the clientsbalanceRecords
         //querying clientsbalancetable
     //public Cursor getAllBalanceRecords() {

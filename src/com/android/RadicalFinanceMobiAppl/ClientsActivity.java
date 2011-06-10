@@ -33,9 +33,9 @@ public class ClientsActivity extends ListActivity {
     private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
     public static String nm = null;
-   // private EditText NAMEText;
-	//private EditText SURNAMEText;
-    //private EditText MOBILEText;
+    private Long rowid;
+    String Name;
+  
 	
     
     
@@ -55,7 +55,31 @@ protected DBAdapter db;
         mDbHelper.open();
         fillData();
         registerForContextMenu(getListView());
+        
+        rowid = (savedInstanceState == null) ? null :
+            (Long) savedInstanceState.getSerializable(DBAdapter.KEY_TRANSID);
+		if (   rowid == null) {
+			Bundle extras = getIntent().getExtras();
+			   rowid = extras != null ? extras.getLong(DBAdapter.KEY_TRANSID): null;
+			   
+			  }
+		//populatefield ();
     }
+    /**
+    public void populatefield() {
+        if (   rowid != null) {
+            Cursor histt = mDbHelper.getClientTransaction(rowid);
+            startManagingCursor(histt);
+            input.setText()
+            NAMEText.setText(histt.getString(
+            		histt.getColumnIndexOrThrow(DBAdapter.KEY_NAME)));
+            SURNAMEText.setText(histt.getString(
+            		histt.getColumnIndexOrThrow(DBAdapter.KEY_SURNAME)));
+            MOBILEText.setText(histt.getString(
+            		histt.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
+        }           
+}
+    **/
     private void fillData() {
         Cursor clientsCursor = mDbHelper.getAllClients();
         startManagingCursor(clientsCursor);
@@ -185,7 +209,18 @@ protected DBAdapter db;
         
          
        	  // mDbHelper.insertClientTransaction( "Deposit", dateFormat.format(date), Amount);
-       	   mDbHelper.updateDepositandWithdrawTransactions(nm, "Deposit", dateFormat.format(date), Amount);
+       	  // mDbHelper.updateDepositandWithdrawTransactions(nm, "Deposit", dateFormat.format(date), Amount);
+       	   
+       	  if (rowid == null) {
+              long _id = mDbHelper.insertClientTransaction("Samuel", "Deposit", dateFormat.format(date), Amount);
+             if (_id > 0) {
+             rowid = _id;
+              }
+          } 
+      else {
+              mDbHelper.updateDepositandWithdrawTransactions("Samuel", "Deposit", dateFormat.format(date), Amount); 
+          }
+         
        	
        	  
        	   // mDbHelper.close();
@@ -259,14 +294,15 @@ protected DBAdapter db;
     public void onListItemClick(ListView l, View v, int position, long _id) {
         super.onListItemClick(l, v, position, _id);
         
-        TextView name = (TextView)v;
+      // TextView name = (TextView)v;
         
         
-       nm=name.getText().toString();
+     // nm = name.getText().toString();
+      
        
        
        
-      Toast.makeText(getApplicationContext(), "item selected "+name.getText().toString(), Toast.LENGTH_LONG).show();
+      //Toast.makeText(getApplicationContext(), "item selected "+name.getText().toString(), Toast.LENGTH_LONG).show();
         
         Intent i = new Intent(this, ClientEdit.class);
         i.putExtra(DBAdapter.KEY_CLIENTID, _id);

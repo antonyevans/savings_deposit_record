@@ -64,7 +64,7 @@ public class ClientEdit extends Mscreen1 {
                     client.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
         }           
 }
-    
+   /* 
     public void populateField(int id) {
     if (rowid==id) {
         Cursor client = mDbHelper.getClient(rowid);
@@ -76,7 +76,7 @@ public class ClientEdit extends Mscreen1 {
         MOBILEText.setText(client.getString(
                 client.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
     }           
-}
+}*/
    
     @Override
     protected void onSaveInstanceState(Bundle outState) {

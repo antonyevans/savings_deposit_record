@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.SimpleCursorAdapter;
+
 public class ShowHistoryActivity extends ListActivity{
 	
 	 	//protected TextView clientName;
@@ -34,11 +35,13 @@ public class ShowHistoryActivity extends ListActivity{
 		        
 		        // Create an array to specify the fields we want to display in the list (name, Surname, mobile)
 		        
-		        String[] fromColumns = new String[]{DBAdapter.KEY_NAME, DBAdapter.KEY_MOBILE, DBAdapter.KEY_TYPE, 
+		        String[] fromColumns = new String[]{DBAdapter.KEY_NAME, DBAdapter.KEY_TYPE, 
 		DBAdapter.KEY_AMOUNT, DBAdapter.KEY_DATETIME};
 
 		        //and an array of the fields we want to bind those fields to (in this case just text1)
-		        int[] toLayoutIDs = new int[]{R.id.clientName, R.id.mobile, R.id.Type, R.id.Amount, R.id.DateTime};
+		        
+		        //will have to remove mobile num. its in another table
+		        int[] toLayoutIDs = new int[]{R.id.clientName, R.id.Type, R.id.Amount, R.id.DateTime};
 		     // Now create a simple cursor adapter and set it to display
 		        SimpleCursorAdapter hist = new SimpleCursorAdapter(this, R.layout.historylist, cCursor, fromColumns, toLayoutIDs);
 		         setListAdapter(hist);

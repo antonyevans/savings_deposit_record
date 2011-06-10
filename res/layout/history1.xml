@@ -14,7 +14,7 @@
     
     <ListView android:id="@id/android:list" 
     android:layout_height="match_parent" 
-    android:drawSelectorOnTop="true" 
+    android:drawSelectorOnTop="false" 
     android:layout_weight="2" 
     android:layout_width="fill_parent"
     android:padding="20dp"
