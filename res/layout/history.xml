@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:orientation="vertical"
-  >
+  android:layout_height="fill_parent" android:orientation="vertical">
    <LinearLayout android:layout_gravity="top" 
     android:orientation="vertical" 
     android:layout_height="wrap_content" 
@@ -22,27 +20,68 @@
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="Clients" 
+                 android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
                 android:id="@+id/Clients_button"></Button>
                 <Button 
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
-                android:text="History" 
+                android:text="History"
+                 android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true" 
                 android:id="@+id/History_button"></Button>
                 <Button 
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="Bank" 
+                 android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
                 android:id="@+id/Bank_button"></Button>
             </TableRow>
         </TableLayout>
     </LinearLayout>
-     <ListView
-    android:id="@+id/history"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="1"
-    />
-  
-  
+    
+     <Button 
+                android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+                android:text="All Transactions" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/AllTransactions_button"></Button>
+      <Button 
+                android:layout_width="fill_parent"
+				android:layout_height="wrap_content" 
+                android:text="Bank" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/ByBank_button">
+                </Button>
+	   <Button 
+                android:layout_width="fill_parent"
+				android:layout_height="wrap_content" 
+                android:text="Today" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/Today_button"></Button>
+  	    <Button 
+                android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+                android:text="By Client" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/ByClient_button"></Button>
+                 
+    
 </LinearLayout>
 

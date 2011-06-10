@@ -8,18 +8,28 @@ android:layout_height="fill_parent">
 	<LinearLayout
 	android:orientation="horizontal"
 	android:layout_width="fill_parent"
+	
 	android:layout_height="wrap_content">
 
 <TextView 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
-android:text="@string/name" />
+android:text="@string/name" 
+android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
 	
 <EditText 
 android:id="@+id/name" 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
-android:layout_weight="1"/>
+android:layout_weight="1"
+android:inputType="text"
+android:fitsSystemWindows="true"
+android:textColor="#FF00FF"
+android:selectAllOnFocus="true"/>
 	</LinearLayout>	
 	<LinearLayout
 	android:orientation="horizontal"
@@ -28,14 +38,24 @@ android:layout_weight="1"/>
 <TextView 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
-android:text="@string/surname" />
+android:text="@string/surname"
+android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+ />
 	
 <EditText 
 android:id="@+id/surname" 
 android:layout_width="fill_parent"
 android:layout_height="wrap_content"
 android:layout_weight="1"
-android:scrollbars="vertical" />
+android:scrollbars="vertical"
+android:textColor="#FF00FF"
+android:inputType="text"
+android:fitsSystemWindows="true"
+android:selectAllOnFocus="true"
+/>
 	</LinearLayout>	
 	<LinearLayout
 	android:orientation="horizontal"
@@ -44,17 +64,32 @@ android:scrollbars="vertical" />
 <TextView 
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" 
-android:text="@string/mobile" />
+android:text="@string/mobile"
+android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+ />
 		
 <EditText 
 android:id="@+id/mobile" 
 android:layout_width="fill_parent"
 android:layout_height="wrap_content" 
-android:layout_weight="1"/>
+android:layout_weight="1"
+android:textColor="#FF00FF"
+android:inputType="phone"
+android:contentDescription="your phone number"
+
+/>
 	</LinearLayout>	
 <Button 
 android:id="@+id/done" 
 android:text="@string/done"
 android:layout_width="wrap_content"
-android:layout_height="wrap_content" />
+android:layout_height="wrap_content"
+android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
 </LinearLayout>

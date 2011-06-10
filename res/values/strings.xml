@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_name">Ideosapp</string>
+    <string name="app_name">RadicalFinanceApp</string>
     <string name="no_clients">No Clients </string>
     <string name="mscreen">To Do Tabs</string>
     <string name="screen_name">Clients</string>
@@ -13,13 +13,18 @@
 	<string name="cancel">Cancel</string>
 	
 	<string name="menu_insert">Add Client</string>
+		<string name="menu_search">Search</string>
+	<string name="menu_editclient">Edit Client</string>	
 	<string name="menu_delete">Delete Client</string>
 	<string name="menu_deposit">Deposit</string>
 	<string name="menu_withdraw">Withdraw</string>
+		<string name="menu_history">History</string>
 	
 	 <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="mobile">Mobile</string>
+    
     <string name="done">Done</string>
+     <string name="no_history">No History yet</string>
    </resources>
  

@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent">
 <TextView
   android:id="@+id/client1"
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-</TextView>
+  android:layout_height="fill_parent"
+  android:textSize="22sp"
+  android:cursorVisible="true"
+  android:capitalize="words"/>
+  <TextView
+  android:id="@+id/client2"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:textSize="22sp"
+  android:cursorVisible="true"
+  android:capitalize="words">
+  </TextView>
+<TextView
+  android:id="@+id/client3"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:textSize="22sp"
+  android:cursorVisible="true"
+   
+  android:capitalize="words"
+   >
+  </TextView>
+  <TextView
+  android:id="@+id/client4"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:textSize="22sp"
+  android:cursorVisible="true"
+  android:capitalize="words"
+   >
+  </TextView>
+
+</RelativeLayout>

@@ -22,17 +22,29 @@ android:orientation="horizontal" >
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="Clients" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
                 android:id="@+id/Clients_button"></Button>
                 <Button 
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="History" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
                 android:id="@+id/History_button"></Button>
                 
                 <Button 
                 android:layout_height="wrap_content" 
                 android:layout_width="wrap_content" 
                 android:text="Bank" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
                 android:id="@+id/Bank_button"></Button>
             </TableRow>
         </TableLayout>

@@ -1,4 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent" 
+  android:layout_height="fill_parent"
+  android:padding="8px"
+  >
+   
 <TextView android:id="@+id/client1" xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"
+   	android:textColor="#FFFFFF"
+    android:fitsSystemWindows="true"/>
+    
+     
+    
+   <TextView android:id="@+id/client2"
+   	android:layout_marginLeft="6px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10sp"
+    android:fitsSystemWindows="true"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@id/client1"/>
+    
+    <TextView android:id="@+id/client3"
+   
+   	android:layout_marginRight="6px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:textColor="#FFFFFF"
+    android:layout_below="@id/client1"/>
+    
+	    
+	    /> 
+</RelativeLayout>

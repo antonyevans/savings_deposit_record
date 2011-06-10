@@ -31,6 +31,10 @@
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
         android:text="Send SMS"
+        android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
         />
          
 </LinearLayout>

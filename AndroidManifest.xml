@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.android.ideos"
+      package="com.android.RadicalFinanceMobiAppl"
       android:versionCode="1"
-      android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="7" />
+      android:versionName="1.0"
+    android:minSdkVersion="8" >
+ 
     
-    <activity android:name=".SMSActivity"
+    <activity android:name="com.android.RadicalFinanceMobiAppl.SMSActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".SmsReceiver"> 
+        <receiver android:name="com.android.RadicalFinanceMobiAppl.SmsReceiver"> 
             <intent-filter> 
                 <action android:name=
                     "android.provider.Telephony.SMS_RECEIVED" /> 
@@ -26,37 +27,58 @@
 
     <application android:label="@string/app_name" android:debuggable="true" android:icon="@drawable/icon" android:allowClearUserData="true">
     	
-				  <activity android:name=".Mscreen1"
+				  <activity android:name="com.android.RadicalFinanceMobiAppl.Mscreen1"
 				  			android:label="@string/app_name"/>
-        <activity android:name=".Ideosactivity"
+				  			
+        <activity android:name="com.android.RadicalFinanceMobiAppl.Ideosactivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Mscreenactivity"
+        <activity android:name="com.android.RadicalFinanceMobiAppl.Mscreenactivity"
         		  android:label="@string/app_name">
         	
         </activity> 
         
-        <activity android:name=".ClientsActivity"
+        <activity android:name="com.android.RadicalFinanceMobiAppl.ClientsActivity"
         		  android:label="@string/app_name">
         	
         </activity> 
-        <activity android:name=".ClientEdit" />
+        <activity android:name="com.android.RadicalFinanceMobiAppl.ClientEdit" 
+        		android:label="@string/app_name">
+      </activity> 
         
-     <activity android:name=".BankActivity"
+         <activity android:name="com.android.RadicalFinanceMobiAppl.YesEditClient" 
+         android:label="@string/app_name">
+          </activity> 
+          
+          <activity android:name="com.android.RadicalFinanceMobiAppl.YesSearchClient" 
+           android:label="@string/app_name">
+          </activity> 
+        
+     <activity android:name="com.android.RadicalFinanceMobiAppl.BankActivity"
         		  android:label="@string/app_name">
         		  </activity>
   
-        <activity android:name=".HistoryActivity"
+        <activity android:name="com.android.RadicalFinanceMobiAppl.HistoryActivity"
         		  android:label="@string/app_name">
         	</activity>
-        
-        <activity android:name="DepositWithdrawalActivity"
+         <activity android:name="com.android.RadicalFinanceMobiAppl.ShowHistoryActivity" 
+          android:label="@string/app_name">
+          </activity> 
+         
+        <activity android:name="com.android.RadicalFinanceMobiAppl.DepositWithdrawalActivity"
 					android:theme="@android:style/Theme.Dialog">
 </activity>
+<activity android:name="com.android.RadicalFinanceMobiAppl.DepositAgent"
+        		 android:theme="@android:style/Theme.Dialog">
+        	</activity>
+        	 
+        <activity android:name="com.android.RadicalFinanceMobiAppl.WithdrawAgent" 
+         android:label="@string/app_name">
+          </activity> 
         
-     </application>
+   </application>  
 </manifest>
