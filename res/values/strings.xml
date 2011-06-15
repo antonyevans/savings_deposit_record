@@ -23,8 +23,11 @@
 	 <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="mobile">Mobile</string>
+    <string name="passkey">Passkey</string>
     
     <string name="done">Done</string>
+    <string name="register">Register</string>
      <string name="no_history">No History yet</string>
+     <string name="no_agent">No Agent</string>
    </resources>
  

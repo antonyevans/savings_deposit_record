@@ -5,7 +5,7 @@
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="Please enter your login details"
+    android:text="Please enter your login details: Only registered employed Agents can login"
   
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -52,7 +52,7 @@
 	
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+               
 />
 <Button
 	android:id="@+id/cancel_button"
@@ -63,7 +63,7 @@
 
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+               
 />
 <TextView
 	android:id="@+id/result"

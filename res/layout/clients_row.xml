@@ -10,7 +10,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
    	android:textColor="#FFFFFF"
-    android:fitsSystemWindows="true"/>
+    android:fitsSystemWindows="false"/>
     
      
     
@@ -18,7 +18,7 @@
    	android:layout_marginLeft="6px"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginRight="10sp"
+    android:layout_marginRight="2sp"
     android:fitsSystemWindows="true"
     android:textColor="#FFFFFF"
     android:layout_toRightOf="@id/client1"/>
@@ -33,5 +33,12 @@
     android:layout_below="@id/client1"/>
     
 	    
-	    /> 
+	<TextView android:id="@+id/client4" 
+	android:layout_marginLeft="6px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@id/client3"/>
+	   
 </RelativeLayout>

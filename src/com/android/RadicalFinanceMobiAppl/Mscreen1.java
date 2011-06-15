@@ -3,5 +3,5 @@ package com.android.RadicalFinanceMobiAppl;
 import android.app.Activity;
 
 public class Mscreen1 extends Activity{
-	public static final String IDEOS_STUFF = "IdeosStuf";
+	public static final String IDEOS_STUFF = "RadicalBankingStuf";
 }

@@ -3,16 +3,11 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-  <EditText
-android:id="@+id/myEditText"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:text="New To Do Item"
-/>
-<ListView
-android:id="@+id/mylistview"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-/>
+  android:layout_height="fill_parent" 
+  android:id="@+id/Depositagenti">
+    <ListView 
+    android:layout_height="fill_parent" 
+    android:id="@+id/mylistview" 
+    android:layout_width="fill_parent">
+    </ListView>
 </LinearLayout>

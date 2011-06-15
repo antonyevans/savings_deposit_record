@@ -22,7 +22,7 @@
                 android:text="Clients" 
                  android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/Clients_button"></Button>
                 <Button 
                 android:layout_height="wrap_content" 
@@ -30,7 +30,7 @@
                 android:text="History"
                  android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true" 
+                
                 android:id="@+id/History_button"></Button>
                 <Button 
                 android:layout_height="wrap_content" 
@@ -38,7 +38,7 @@
                 android:text="Bank" 
                  android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/Bank_button"></Button>
             </TableRow>
         </TableLayout>
@@ -51,7 +51,7 @@
                 android:clickable="true"
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/AllTransactions_button"></Button>
       <Button 
                 android:layout_width="fill_parent"
@@ -60,7 +60,7 @@
                 android:clickable="true"
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/ByBank_button">
                 </Button>
 	   <Button 
@@ -70,7 +70,7 @@
                 android:clickable="true"
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/Today_button"></Button>
   	    <Button 
                 android:layout_width="fill_parent"
@@ -79,7 +79,7 @@
                 android:clickable="true"
                 android:textStyle="bold"
                 android:textSize="22sp"
-                android:focusableInTouchMode="true"
+                
                 android:id="@+id/ByClient_button"></Button>
                  
     

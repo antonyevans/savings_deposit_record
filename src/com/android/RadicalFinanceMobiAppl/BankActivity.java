@@ -62,12 +62,12 @@ public class BankActivity extends Mscreen1{
     			startActivity(q); 
         	}
         	});
-        //should call a content dialogue
+        //should call an alert dialogue
         btnDeposit.setOnClickListener(new OnClickListener()
         {
         	@Override
         	public void onClick(View v){
-        		//insert code to do here
+        		//calls deposit agent amount
         		Intent i = new Intent(BankActivity.this,DepositAgent.class);
     			startActivity(i);
 

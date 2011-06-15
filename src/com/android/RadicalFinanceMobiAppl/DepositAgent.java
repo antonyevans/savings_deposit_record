@@ -1,28 +1,39 @@
 package com.android.RadicalFinanceMobiAppl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.EditText;
 
+
 public class DepositAgent extends Mscreen1 {
 	
 	String AgentName;
-	//private Long rowid;
+	private Long rowid;
 	private DBAdapter mDbHelper;
+	 public static String agentnumber;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.maincustom);
+        mDbHelper = new DBAdapter(this);
+        mDbHelper.open();
         
-      // set the activity layout
-        //setContentView(R.layout.history);
+        rowid = (savedInstanceState == null) ? null :
+            (Long) savedInstanceState.getSerializable(DBAdapter.KEY_AGENTID);
+		if (   rowid == null) {
+			Bundle extras = getIntent().getExtras();
+			   rowid = extras != null ? extras.getLong(DBAdapter.KEY_AGENTID): null;
+			   
+			  }
 	
-	//}
-	
-	//private void displ() {
-		// TODO Auto-generated method stub
 
+	
+	
 	
 	AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -35,32 +46,57 @@ public class DepositAgent extends Mscreen1 {
 	 final EditText input = new EditText(this);
 	 alert.setView(input);
 
-	 alert.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+	 alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 		 
 	 public void onClick(final DialogInterface dialog, final int whichButton) {
 	   final String value = input.getText().toString();
 	   //parsed amount from long to string for compatibility issues with .getText
 	   
-	   final Long Amount = Long.parseLong(value);
+	   final Long Cash = Long.parseLong(value);
 	   
-	  mDbHelper.updateAgentDepositTransactions(null, Amount);
-	 // Insert into tableX  (mytime) values(‘NOW()’); 
-
-	   mDbHelper.close();
+	   SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+       Date date = new Date();
+       
+       if (rowid == null) {
+           long _id = mDbHelper.insertAgentDeposit("Guest", agentnumber(), dateFormat.format(date), Cash);
+          if (_id > 0) {
+          rowid = _id;
+           }
+       } 
+       else {
+               mDbHelper.updateAgentTransactions("Guest", agentnumber(), dateFormat.format(date), Cash); 
+           }
+	 
+      
+	  
 
 	   }
 });
 	 alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-  	   public void onClick(DialogInterface dialog, int whichButton) {
-  	     // Canceled.
-  		   
-                 finish();
-                
-	   }
-  	 });
+	  	   public void onClick(DialogInterface dialog, int whichButton) {
+	  	     // Canceled.
+	  		   
+	                 finish();
+	  	   }
+	  	 });
 
-  	 alert.show();
-  } 
+	  	 alert.show();
+	  	 
+	}
+	
+	 public String agentnumber (){
+		 String h="";
+		AgentsDepositShow d=new AgentsDepositShow();
+		h=d.fillmobilefromDB();
+	 //h =  mDbHelper.getAgentTransactions();
+      
+		 
+  	   return h;
+     }
+	  	 
+	public void close(){
+		mDbHelper.close();
+	}
 	
 	}
 	

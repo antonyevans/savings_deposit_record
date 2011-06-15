@@ -97,7 +97,7 @@ public class HistoryActivity extends Mscreen1{
 			
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+				
 				
 			}
 		});
@@ -105,7 +105,9 @@ public class HistoryActivity extends Mscreen1{
 			
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+				Intent q = new Intent(HistoryActivity.this,AgentsDepositShow.class);
+    			startActivity(q); 
+					
 				
 			}
 		});
@@ -113,7 +115,8 @@ public class HistoryActivity extends Mscreen1{
 			
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
+				 
+				
 				
 			}
 		});
@@ -125,38 +128,7 @@ public class HistoryActivity extends Mscreen1{
     			startActivity(q); 
 				
 			}
-        /*	
-        class ShowHistoryOfClients extends ListActivity{
-        	
-			//public void onClick(View arg0) {
-				
-				//Intent showhisto = new Intent(HistoryActivity.this,YesSearchClient.class);
-    			//startActivity(showhisto);
-				public void  filldata() {
-			        Cursor historyCursor = mDbHelper.getClientTransactions();
-			        startManagingCursor(historyCursor);
-			        
-			    
-			 // Create an array to specify the fields we want to display in the list (name and Surname)
-			  
-			    String[] fromColumns = new String[]{DBAdapter.KEY_NAME, DBAdapter.KEY_TYPE, DBAdapter.KEY_DATETIME, DBAdapter.KEY_AMOUNT};
-			   
-			    
-			 // and an array of the fields we want to bind those fields to (in this case just text1)
-			    int[] toLayoutIDs = new int[]{R.id.client1, R.id.client2, R.id.client3, R.id.client4};
-			  
-
-			 // Now create a simple cursor adapter and set it to display
-			    SimpleCursorAdapter TransactionsTable = new SimpleCursorAdapter(this, R.layout.clients_row, historyCursor, fromColumns, toLayoutIDs);
-			     setListAdapter(TransactionsTable);
-    			
-			
-		
-    
-  
-        };
-			
-  */
+        
        });
 
     }

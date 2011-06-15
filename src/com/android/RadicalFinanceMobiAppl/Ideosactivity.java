@@ -21,7 +21,7 @@ public class Ideosactivity extends Mscreen1 {
         super.onCreate(savedInstanceState);
         
       // set the activity layout
-        setContentView(R.layout.main);
+        setContentView(R.layout.adminlayoutlogin);
       //Getting the EditText and Button References
         
         etUsername = (EditText)findViewById(R.id.username);
@@ -39,10 +39,10 @@ public class Ideosactivity extends Mscreen1 {
         		String username = etUsername.getText().toString();
         		String password = etPassword.getText().toString();
         		
-        		if(username.equals("guest") && password.equals("guest")){
+        		if(username.equals("admin") && password.equals("admin")){
         			lblResult.setText("Login Successful.");
         			
-        			Intent i = new Intent(Ideosactivity.this,Mscreenactivity.class);
+        			Intent i = new Intent(Ideosactivity.this,AdminviewAfterLogin.class);
         			startActivity(i);  
         		}
         		else
@@ -58,6 +58,7 @@ public class Ideosactivity extends Mscreen1 {
         	public void onClick(View v){
         		// Close the Application
         		finish();
+        		
         		}
         	});
     }

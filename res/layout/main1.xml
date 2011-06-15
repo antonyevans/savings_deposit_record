@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Login As Admin or Agent "
+  
+                android:textStyle="bold"
+                android:textSize="16sp"
+                
+    />
+
+<Button
+	android:id="@+id/Adminlogin_button"
+	android:text="ADMIN"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:clickable="true"
+	
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
+<Button
+	android:id="@+id/Agentlogin_button"
+	android:text="AGENT"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:clickable="true"
+
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
+
+</LinearLayout>

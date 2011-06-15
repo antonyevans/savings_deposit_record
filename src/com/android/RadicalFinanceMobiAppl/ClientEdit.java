@@ -15,8 +15,7 @@ public class ClientEdit extends Mscreen1 {
     private EditText MOBILEText;
     private Long rowid;
     private DBAdapter mDbHelper;
-//    private EditText DEPOText;
-  //  private Long rowidd;
+
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +63,7 @@ public class ClientEdit extends Mscreen1 {
                     client.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
         }           
 }
-   /* 
-    public void populateField(int id) {
-    if (rowid==id) {
-        Cursor client = mDbHelper.getClient(rowid);
-        startManagingCursor(client);
-        NAMEText.setText(client.getString(
-                client.getColumnIndexOrThrow(DBAdapter.KEY_NAME)));
-        SURNAMEText.setText(client.getString(
-                client.getColumnIndexOrThrow(DBAdapter.KEY_SURNAME)));
-        MOBILEText.setText(client.getString(
-                client.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
-    }           
-}*/
+
    
     @Override
     protected void onSaveInstanceState(Bundle outState) {

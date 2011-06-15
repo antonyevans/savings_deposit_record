@@ -91,7 +91,7 @@ android:layout_height="fill_parent">
 			android:clickable="true"
 			android:textStyle="bold"
             android:textSize="22sp"
-            android:focusableInTouchMode="true"   
+             
                
 />
 </LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="View Available Agents,Register An Agent or View Transactions "
+  
+                android:textStyle="bold"
+                android:textSize="18sp"
+                
+    />
+
+<Button
+	android:id="@+id/AdminviewAgent_button"
+	android:text="View agents"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:clickable="true"
+	
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
+<Button
+	android:id="@+id/AdminRegisterAgent_button"
+	android:text="Register Agent"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:clickable="true"
+
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
+<Button
+	android:id="@+id/AdminViewTransactions_button"
+	android:text="View Transactions"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:clickable="true"
+	
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+/>
+
+</LinearLayout>

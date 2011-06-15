@@ -14,7 +14,9 @@ import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -32,7 +34,7 @@ public class ClientsActivity extends ListActivity {
 	
     private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
-    public static String nm = null;
+    public static String nm = "null";
     private Long rowid;
     String Name;
   
@@ -43,6 +45,8 @@ protected DBAdapter db;
 	
 	//protected ListAdapter adapter;
     private DBAdapter mDbHelper;
+    private Button btnHistory;
+    private Button btnBank;
 	
 	
 	//private static final String TAGG = "ClientsActivity";
@@ -51,6 +55,29 @@ protected DBAdapter db;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.clients);
+        btnHistory = (Button)findViewById(R.id.History_button);
+        btnBank = (Button)findViewById(R.id.Bank_button);
+        
+        btnHistory.setOnClickListener(new OnClickListener()
+        {
+        	@Override
+        	public void onClick(View v){
+        		//Calls the next HistoryActivity 
+        		Intent k = new Intent(ClientsActivity.this,HistoryActivity.class);
+    			startActivity(k);  
+               
+        		}
+        	});
+        btnBank.setOnClickListener(new OnClickListener()
+        {
+        	@Override
+        	public void onClick(View v){
+        		//Calls the next BankActivity 
+        		Intent n = new Intent(ClientsActivity.this,BankActivity.class);
+    			startActivity(n);  
+        	  }
+        });
+        
         mDbHelper = new DBAdapter(this);
         mDbHelper.open();
         fillData();
@@ -65,21 +92,7 @@ protected DBAdapter db;
 			  }
 		//populatefield ();
     }
-    /**
-    public void populatefield() {
-        if (   rowid != null) {
-            Cursor histt = mDbHelper.getClientTransaction(rowid);
-            startManagingCursor(histt);
-            input.setText()
-            NAMEText.setText(histt.getString(
-            		histt.getColumnIndexOrThrow(DBAdapter.KEY_NAME)));
-            SURNAMEText.setText(histt.getString(
-            		histt.getColumnIndexOrThrow(DBAdapter.KEY_SURNAME)));
-            MOBILEText.setText(histt.getString(
-            		histt.getColumnIndexOrThrow(DBAdapter.KEY_MOBILE)));
-        }           
-}
-    **/
+    
     private void fillData() {
         Cursor clientsCursor = mDbHelper.getAllClients();
         startManagingCursor(clientsCursor);
@@ -90,7 +103,7 @@ protected DBAdapter db;
     String[] fromColumns = new String[]{DBAdapter.KEY_NAME, DBAdapter.KEY_SURNAME, DBAdapter.KEY_MOBILE};
    
     
- // and an array of the fields we want to bind those fields to (in this case just text1)
+ // and an array of the fields we want to bind those fields to (in this case just text1,2,3)
     int[] toLayoutIDs = new int[]{R.id.client1, R.id.client2, R.id.client3};
   
 
@@ -161,16 +174,6 @@ protected DBAdapter db;
         	case EDIT_ID:
         		
         		
-        		/*
-        		setContentView(R.layout.client_edit);
-        		 NAMEText = (EditText) findViewById(R.id.name);
-        	        SURNAMEText = (EditText) findViewById(R.id.surname);
-        	        MOBILEText = (EditText) findViewById(R.id.mobile);
-        	        
-        	ClientEdit u=new ClientEdit();
-        	u.populateField(item.getItemId());
-        	*/
-        		//onListItemClick(ListView l, View v, int position, long _id);
         		
         	return true;
         
@@ -194,7 +197,7 @@ protected DBAdapter db;
 	       	 	alertDeposit.setView(input);
        	 
 
-		       	 alertDeposit.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+		       	 alertDeposit.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 		       	 public void onClick(DialogInterface dialog, int whichButton) {
 		       	 String value = input.getText().toString();
 		       	 
@@ -204,12 +207,7 @@ protected DBAdapter db;
 		       	
 		       	 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		         Date date = new Date();
-         
-        
-        
-         
-       	  // mDbHelper.insertClientTransaction( "Deposit", dateFormat.format(date), Amount);
-       	  // mDbHelper.updateDepositandWithdrawTransactions(nm, "Deposit", dateFormat.format(date), Amount);
+		         
        	   
        	  if (rowid == null) {
               long _id = mDbHelper.insertClientTransaction("Samuel", "Deposit", dateFormat.format(date), Amount);
@@ -226,7 +224,7 @@ protected DBAdapter db;
        	   // mDbHelper.close();
        	  
        	  Toast.makeText(getApplicationContext(), "You Deposited "+input.getText().toString(), Toast.LENGTH_LONG).show();
-       // Do something with value and set button
+       // Do something with value and ok button
    	   
   	   }
   	 });
@@ -256,6 +254,18 @@ protected DBAdapter db;
              	 alertWithdraw.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                  	 public void onClick(DialogInterface dialog, int whichButton) {
                  		 
+                 		String value = output.getText().toString();
+                 		
+       		       	 
+     		       	   //parsed amount from long to string for compatibility issues with .getText
+     		       	 		Long Amount = Long.parseLong(value);
+                 		 
+     		       	 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+     		       	 		
+     		       	 		Date date = new Date();
+     		       	 		
+     		       	 		
+     		       	 	Toast.makeText(getApplicationContext(), "You have withdrawn "+output.getText().toString(), Toast.LENGTH_LONG).show();
                  	 }
              	 });
              	 alertWithdraw.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -294,23 +304,32 @@ protected DBAdapter db;
     public void onListItemClick(ListView l, View v, int position, long _id) {
         super.onListItemClick(l, v, position, _id);
         
-      // TextView name = (TextView)v;
+       TextView name = (TextView)v;
         
         
-     // nm = name.getText().toString();
+     //nm = name.getText().toString();
+      
+       
       
        
        
-       
-      //Toast.makeText(getApplicationContext(), "item selected "+name.getText().toString(), Toast.LENGTH_LONG).show();
+      Toast.makeText(getApplicationContext(), "item selected "+name.getText().toString(), Toast.LENGTH_LONG).show();
         
         Intent i = new Intent(this, ClientEdit.class);
         i.putExtra(DBAdapter.KEY_CLIENTID, _id);
         startActivityForResult(i, ACTIVITY_EDIT);
         
     }
-    
-   
+  //  @Override
+   // public string onListItemClick(ListView l, View v, int position, long _id) {
+    //	super.onListItemClick(l, v, position, _id);
+        
+      // TextView name = (TextView)v;
+              
+       //return nm = name.getText().toString();
+      
+    //}
+
     
     
    

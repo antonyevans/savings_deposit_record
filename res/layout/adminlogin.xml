@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" 
+android:layout_width="fill_parent"
+android:layout_height="fill_parent">
+
+
+	<TextView 
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" 
+	android:text="Register your Field Agents" 
+	android:clickable="true"
+    android:textStyle="bold"
+    android:textSize="24sp"
+    android:focusableInTouchMode="true"
+/>
+
+	
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+
+	<TextView 
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" 
+	android:text="@string/name" 
+	android:clickable="true"
+    android:textStyle="bold"
+    android:textSize="22sp"
+    android:focusableInTouchMode="true"
+/>
+	
+	<EditText 
+	android:id="@+id/name" 
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content" 
+	android:layout_weight="1"
+	android:inputType="text"
+	android:fitsSystemWindows="true"
+	android:textColor="#FF00FF"
+	android:selectAllOnFocus="true"/>
+	</LinearLayout>	
+	
+	<LinearLayout
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	
+	<TextView 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/surname"
+		android:clickable="true"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:focusableInTouchMode="true"
+ />
+	
+	<EditText 
+		android:id="@+id/surname" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:scrollbars="vertical"
+		android:textColor="#FF00FF"
+		android:inputType="text"
+		android:fitsSystemWindows="true"
+		android:selectAllOnFocus="true"
+/>
+</LinearLayout>	
+	<LinearLayout
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	<TextView 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/mobile"
+			android:clickable="true"
+			android:textStyle="bold"
+            android:textSize="22sp"
+            android:focusableInTouchMode="true"
+ />	
+	<EditText 
+			android:id="@+id/mobile" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"
+			android:textColor="#FF00FF"
+			android:inputType="number"
+			android:hint="enter mobile number"
+			android:contentDescription="your phone number"
+/>
+</LinearLayout>	
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+	<TextView 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 
+			android:text="@string/passkey"
+			android:clickable="true"
+			android:textStyle="bold"
+            android:textSize="22sp"
+            android:focusableInTouchMode="true"
+ />
+ 	<EditText 
+			android:id="@+id/passkey" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:layout_weight="1"
+			android:textColor="#FF00FF"
+			android:hint="enter a passkey"
+			android:inputType="text"
+			
+/>
+	</LinearLayout>	
+		<Button 
+			android:id="@+id/register" 
+			android:text="@string/register"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:clickable="true"
+			android:textStyle="bold"
+            android:textSize="22sp"
+             
+               
+/>
+</LinearLayout>

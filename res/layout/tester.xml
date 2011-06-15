@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<TextView android:id="@+id/headerMessage"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_alignParentTop="true" android:text="Authentication Form"
+		android:textSize="20sp" />
+
+
+	<LinearLayout android:id="@+id/usernameview"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_below="@+id/headerMessage" android:layout_marginTop="10dip">
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="Username: "
+			android:textSize="16sp" android:layout_weight="3" />
+
+		<EditText android:layout_width="fill_parent" android:id="@+id/usernameEditText"
+			android:layout_height="wrap_content" android:layout_weight="1" />
+
+	</LinearLayout>
+
+	<LinearLayout android:id="@+id/passwordview"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_marginTop="3dip" android:layout_below="@+id/usernameview">
+		<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:text="Password: "
+			android:textSize="16sp" android:layout_weight="3" />
+
+		<EditText android:layout_width="fill_parent" android:id="@+id/passwordEditText"
+			android:layout_height="wrap_content" android:layout_weight="1"
+			android:password="true" />
+
+	</LinearLayout>
+
+	<CheckBox android:layout_below="@+id/passwordview"
+		android:layout_width="wrap_content" android:text="Remember Password!"
+		android:layout_height="wrap_content" android:id="@+id/rempasswordcheckbox" />
+
+	<LinearLayout android:id="@+id/buttonsview"
+		android:layout_marginTop="50dip" android:orientation="horizontal"
+		android:layout_height="wrap_content" android:layout_below="@+id/passwordview"
+		android:layout_width="fill_parent">
+
+
+		<Button android:id="@+id/logingButton" android:text="Login"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_weight="1" />
+		<Button android:id="@+id/clearButton" android:text="Clear"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_weight="1" />
+
+	</LinearLayout>
+
+
+<LinearLayout
+		
+		android:orientation="horizontal"
+		android:layout_height="wrap_content" android:layout_below="@+id/buttonsview"
+		android:layout_width="fill_parent">
+
+	<Button android:id="@+id/registerButton" android:text="Register"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		
+		android:layout_alignParentRight="true" />
+
+	</LinearLayout>
+
+</RelativeLayout>

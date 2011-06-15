@@ -4,6 +4,54 @@
   android:layout_width="fill_parent" 
   android:layout_height="fill_parent">
   
+   <LinearLayout android:layout_gravity="top" 
+    android:orientation="vertical" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/linearLayout" 
+    android:layout_width="fill_parent">
+        <TableLayout 
+        android:stretchColumns="*" 
+        android:layout_height="wrap_content" 
+        android:id="@+id/tableLayout1" 
+        android:layout_width="wrap_content">
+            <TableRow 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:id="@+id/tableRow1">
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="Clients" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/Clients_button"></Button>
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="History" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/History_button"></Button>
+                
+                <Button 
+                android:layout_height="wrap_content" 
+                android:layout_width="wrap_content" 
+                android:text="Bank" 
+                android:clickable="true"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:focusableInTouchMode="true"
+                android:id="@+id/Bank_button"></Button>
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+  
+  
     <TextView android:layout_height="wrap_content" 
     android:text="@string/no_clients" 
     android:id="@+id/android:empty" 
@@ -15,7 +63,8 @@
     
     <ListView android:id="@id/android:list" 
     android:layout_height="match_parent" 
-    android:drawSelectorOnTop="true" 
+    
+    android:visibility="visible"
     android:layout_weight="2" 
     android:layout_width="fill_parent"
     android:padding="20dp"
